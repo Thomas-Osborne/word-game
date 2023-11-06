@@ -1,22 +1,28 @@
 import raw from "../../words_alpha.txt"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 
 export default function App() {
 
-  function extractData() {
+  const [textArray, setTextArray] = useState([]);
+  const [sortedArray, setSortedArray] = useState([]);
+  const [objectArray, setObjectArray] = useState([]);
+
+  useEffect(() => {{
     fetch(raw)
       .then(r => r.text())
-      .then(text => {
-      const textArray = text.split("\r\n").filter(reduceWords);
-      const sortedArray = textArray.sort(sortWords);
-      const objectArray = sortedArray.map(word => ({"word": word.toUpperCase(), "found": false}))
-      console.log(objectArray);
-    })
-  }
-
-    function reduceWords(word) {
-      return (word.length >= 3 && word.length <= 6)
+      .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
     }
+    setSortedArray(textArray.sort(sortWords));
+    setObjectArray(sortedArray.map(word => ({"word": word.toUpperCase(), "found": false, "length": word.length})))
+  }, [])
+
+  console.log(textArray);
+  console.log(sortedArray);
+  console.log(objectArray);
+
+  function reduceWords(word) {
+    return (word.length >= 3 && word.length <= 6)
+  }
 
     function getNLetterWords(word, length) {
       return (word.length == length)
@@ -40,7 +46,6 @@ export default function App() {
       return word.join();
     }
 
-  extractData();
   // const wordList = extractData();
   // console.log(wordList);
   // console.log("Object", objectArray);
