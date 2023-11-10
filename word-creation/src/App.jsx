@@ -94,10 +94,8 @@ export default function App() {
   function findAllWords(word) {
     let words = [];
     const subsets = getPowerSet(word);
-    console.log("subsets", subsets);
     for (const subset of subsets) {
       const permutations = getPermutations(subset);
-      console.log(permutations);
       for (const permutation of permutations) {
         if (isWord(permutation) && !(words.includes(permutation))) {
           words.push(permutation);
@@ -110,9 +108,7 @@ export default function App() {
   // const wordList = extractData();
   // console.log(wordList);
   // console.log("Object", objectArray);
-  console.log(shuffleWord("abcdef"));
-  console.log(findAllWords("abcdef"));
-  const word = "abcdef";
+  const word = shuffleWord("abcdef");
   const allWords = findAllWords(word);
   const allWordElts = allWords.map(word => <p>{word}</p>)
   return (
