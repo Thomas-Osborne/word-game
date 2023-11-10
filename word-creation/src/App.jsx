@@ -12,10 +12,11 @@ export default function App() {
       .then(r => r.text())
       .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
     }
-    setSortedWords(textArray.sort(sortWords).map(word => ({"word": word.toUpperCase(), "found": false})));
-    setChosenWord(getRandomWord());
+    setSortedWords(textArray.sort(sortWords).map(word => ({"name": word.toUpperCase(), "found": false})));
+    // setChosenWord(getRandomWord());
     console.log("text", textArray);
     console.log("sorted", sortedWords);
+    console.log("word", chosenWord);
   }, [])
 
   function reduceWords(word) {
@@ -23,9 +24,9 @@ export default function App() {
   }
 
   function getRandomWord() {
-    const sixLetterWords = sortedWords.filter(word => word.length == 6);
+    const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
     const index = randomIndex(sortedWords.length);
-    return sixLetterWords[index];
+    return sixLetterWords[index].name;
   }
 
   function randomIndex(length) {
@@ -85,7 +86,7 @@ export default function App() {
   }
 
   function isWord(word) {
-    return sortedWords.includes(word);
+    return sortedWords.map(word => word.name).includes(word);
   }
 
   function findAllWords(word) {
@@ -102,14 +103,15 @@ export default function App() {
     return words.sort(sortWords);
   }
 
-  // const allWords = findAllWords(chosenWord);
-  // const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
+  const allWords = findAllWords(chosenWord);
+  console.log("all", allWords);
+  const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
 
   return (
     <div>
       Hello World!
-      {/* <h1>{shuffleWord(chosenWord)}</h1>
-      {allWordsElts} */}
+      <h1>{shuffleWord(chosenWord)}</h1>
+      {allWordsElts}
     </div>
   )
 }
