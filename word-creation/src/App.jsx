@@ -43,7 +43,7 @@ export default function App() {
       let j = Math.floor(Math.random() * (i + 1));
       [word[i], word[j]] = [word[j], word[i]];
     }
-    return word.join();
+    return word.join("");
   }
 
   function getPowerSet(word) {
@@ -53,7 +53,7 @@ export default function App() {
     for (const char of word) {
         const last = subsets.length-1;
         for (let i = 0; i <= last; i++) {
-            let newSubset = [...subsets[i], char].join();
+            let newSubset = [...subsets[i], char].join("");
             if (!(subsets.includes(newSubset))) {
               subsets.push(newSubset);
             }
