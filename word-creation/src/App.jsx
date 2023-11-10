@@ -49,7 +49,7 @@ export default function App() {
   function getPowerSet(word) {
     // Source: https://stackoverflow.com/questions/42773836/how-to-find-all-subsets-of-a-set-in-javascript-powerset-of-array
     word = word.split("");
-    const subsets = [[]];
+    const subsets = [""];
     for (const char of word) {
         const last = subsets.length-1;
         for (let i = 0; i <= last; i++) {
@@ -59,19 +59,60 @@ export default function App() {
             }
         }
     }
-    
-    return subsets;
+    return subsets.sort(sortWords);
   }
 
   function getPermutations(word) {
+    // Source: https://stackoverflow.com/questions/9960908/permutations-in-javascript
+    word = word.split("");
+    let length = word.length,
+    permutations = [word.slice()],
+    c = new Array(length).fill(0),
+    i = 1, k, p;
 
+    while (i < length) {
+      if (c[i] < i) {
+        k = i % 2 && c[i];
+        p = word[i];
+        word[i] = word[k];
+        word[k] = p;
+        c[i]++;
+        i = 1;
+        permutations.push(word.slice().join(""));
+      } else {
+        c[i] = 0;
+        ++i;
+      }
+    }
+    return permutations.sort(sortWords);
+  }
+
+  function isWord(word) {
+    return sortedArray.includes(word);
+  }
+
+  function findAllWords(word) {
+    let words = [];
+    const subsets = getPowerSet(word);
+    console.log("subsets", subsets);
+    for (const subset of subsets) {
+      const permutations = getPermutations(subset);
+      console.log(permutations);
+      for (const permutation of permutations) {
+        if (isWord(permutation) && !(words.includes(permutation))) {
+          words.push(permutation);
+        }
+      }
+    }
+    return words.sort(sortWords);
   }
 
   // const wordList = extractData();
   // console.log(wordList);
   // console.log("Object", objectArray);
-  console.log(shuffleWord("abcdef"))
-  console.log(getPowerSet("abcdef"))
+  console.log(shuffleWord("abcdef"));
+  console.log(findAllWords("abcdef"))
+
   return (
     <div>
       <p>Hello</p>
