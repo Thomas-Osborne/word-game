@@ -53,7 +53,7 @@ export default function App() {
     for (const char of word) {
         const last = subsets.length-1;
         for (let i = 0; i <= last; i++) {
-            let newSubset = [...subsets[i], char];
+            let newSubset = [...subsets[i], char].join();
             if (!(subsets.includes(newSubset))) {
               subsets.push(newSubset);
             }
@@ -71,6 +71,7 @@ export default function App() {
   // console.log(wordList);
   // console.log("Object", objectArray);
   console.log(shuffleWord("abcdef"))
+  console.log(getPowerSet("abcdef"))
   return (
     <div>
       <p>Hello</p>
