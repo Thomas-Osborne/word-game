@@ -14,7 +14,7 @@ export default function App() {
       .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
     }
     setSortedWords(textArray.sort(sortWords).map(word => word.toUpperCase()));
-    setObjectWords(sortedWords.map(word => ({"word": word, "found": false, "length": word.length})))
+    setObjectWords(sortedWords.map(word => ({"word": word, "found": false})))
     // setChosenWord(getRandomWord());
   }, [])
 
