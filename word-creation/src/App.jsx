@@ -4,30 +4,30 @@ import {useState, useEffect} from "react"
 export default function App() {
 
   const [textArray, setTextArray] = useState([]);
-  const [sortedArray, setSortedArray] = useState([]);
-  const [objectArray, setObjectArray] = useState([]);
+  const [sortedWords, setSortedWords] = useState([]);
+  const [objectWords, setObjectWords] = useState([]);
 
   useEffect(() => {{
     fetch(raw)
       .then(r => r.text())
       .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
     }
-    setSortedArray(textArray.sort(sortWords));
-    setObjectArray(sortedArray.map(word => ({"word": word.toUpperCase(), "found": false, "length": word.length})))
+    setSortedWords(textArray.sort(sortWords));
+    setObjectWords(sortedWords.map(word => ({"word": word.toUpperCase(), "found": false, "length": word.length})))
   }, [])
 
-  console.log(textArray);
-  console.log(sortedArray);
-  console.log(objectArray);
+  console.log("text", textArray);
+  console.log("sorted", sortedWords);
+  console.log("object", objectWords);
 
   function reduceWords(word) {
     return (word.length >= 3 && word.length <= 6)
   }
 
   function getRandomWord() {
-    const sixLetterWords = objectArray.filter(word => word.length == 6);
-    const index = randomIndex(sixLetterWords.length);
-    return sixLetterWords[index].word;
+    const sixLetterWords = sortedWords.filter(word => word.length == 6);
+    const index = randomIndex(sortedWords.length);
+    return sixLetterWords[index];
   }
 
   function randomIndex(length) {
@@ -87,7 +87,7 @@ export default function App() {
   }
 
   function isWord(word) {
-    return sortedArray.includes(word);
+    return sortedWords.includes(word);
   }
 
   function findAllWords(word) {
@@ -104,17 +104,21 @@ export default function App() {
     return words.sort(sortWords);
   }
 
-  // const wordList = extractData();
-  // console.log(wordList);
-  // console.log("Object", objectArray);
   const word = getRandomWord();
   console.log("Random Word: ", word);
-  // const allWords = findAllWords(word);
-  // const allWordElts = allWords.map(word => <p>{word}</p>)
+
+  if (word != undefined) {
+    const allWords = findAllWords(word);
+    console.log(allWords);
+  }
+
+  const testAllWords = findAllWords("carrot");
+  const testAllWordsElts = testAllWords.map(word => <p key={word}>{word}</p>);
+
   return (
     <div>
-      <h1>{shuffleWord(word)}</h1>
-      {allWordElts}
+      <h1>{shuffleWord("carrot")}</h1>
+      {testAllWordsElts}
     </div>
   )
 }
