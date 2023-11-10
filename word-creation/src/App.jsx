@@ -6,14 +6,16 @@ export default function App() {
   const [textArray, setTextArray] = useState([]);
   const [sortedWords, setSortedWords] = useState([]);
   const [objectWords, setObjectWords] = useState([]);
+  const [chosenWord, setChosenWord] = useState("SPHERE");
 
   useEffect(() => {{
     fetch(raw)
       .then(r => r.text())
       .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
     }
-    setSortedWords(textArray.sort(sortWords));
-    setObjectWords(sortedWords.map(word => ({"word": word.toUpperCase(), "found": false, "length": word.length})))
+    setSortedWords(textArray.sort(sortWords).map(word => word.toUpperCase()));
+    setObjectWords(sortedWords.map(word => ({"word": word, "found": false, "length": word.length})))
+    // setChosenWord(getRandomWord());
   }, [])
 
   console.log("text", textArray);
@@ -104,21 +106,13 @@ export default function App() {
     return words.sort(sortWords);
   }
 
-  const word = getRandomWord();
-  console.log("Random Word: ", word);
-
-  if (word != undefined) {
-    const allWords = findAllWords(word);
-    console.log(allWords);
-  }
-
-  const testAllWords = findAllWords("carrot");
-  const testAllWordsElts = testAllWords.map(word => <p key={word}>{word}</p>);
+  const allWords = findAllWords(chosenWord);
+  const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
 
   return (
     <div>
-      <h1>{shuffleWord("carrot")}</h1>
-      {testAllWordsElts}
+      <h1>{shuffleWord(chosenWord)}</h1>
+      {allWordsElts}
     </div>
   )
 }
