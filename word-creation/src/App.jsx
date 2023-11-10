@@ -103,13 +103,17 @@ export default function App() {
     return words.sort(sortWords);
   }
 
+  function generateNewWord() {
+    setChosenWord(getRandomWord);
+  }
+
   const allWords = findAllWords(chosenWord);
   console.log("all", allWords);
   const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
 
   return (
     <div>
-      Hello World!
+      <button onClick = {generateNewWord}>Click here!</button>
       <h1>{shuffleWord(chosenWord)}</h1>
       {allWordsElts}
     </div>
