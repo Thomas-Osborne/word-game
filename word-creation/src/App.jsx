@@ -81,7 +81,7 @@ export default function App() {
         permutations.push(word.slice().join(""));
       } else {
         c[i] = 0;
-        ++i;
+        i++;
       }
     }
     return permutations.sort(sortWords);
@@ -111,11 +111,14 @@ export default function App() {
   // console.log(wordList);
   // console.log("Object", objectArray);
   console.log(shuffleWord("abcdef"));
-  console.log(findAllWords("abcdef"))
-
+  console.log(findAllWords("abcdef"));
+  const word = "abcdef";
+  const allWords = findAllWords(word);
+  const allWordElts = allWords.map(word => <p>{word}</p>)
   return (
     <div>
-      <p>Hello</p>
+      <h1>{word}</h1>
+      {allWordElts};
     </div>
   )
 }
