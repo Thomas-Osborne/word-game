@@ -38,12 +38,9 @@ export default function App() {
   }
 
   function shuffleWord(word) {
-    word = word.split("");
-    for (let i = word.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [word[i], word[j]] = [word[j], word[i]];
-    }
-    return word.join("");
+    const permutations = getPermutations(word);
+    const index = randomIndex(permutations.length);
+    return permutations[index];
   }
 
   function getPowerSet(word) {
@@ -108,6 +105,8 @@ export default function App() {
   // const wordList = extractData();
   // console.log(wordList);
   // console.log("Object", objectArray);
+  console.log(shuffleWord("abcdef"));
+  console.log(findAllWords("abcdef"));
   const word = shuffleWord("abcdef");
   const allWords = findAllWords(word);
   const allWordElts = allWords.map(word => <p>{word}</p>)
