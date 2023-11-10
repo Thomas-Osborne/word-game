@@ -24,8 +24,10 @@ export default function App() {
     return (word.length >= 3 && word.length <= 6)
   }
 
-  function getNLetterWords(word, length) {
-    return (word.length == length)
+  function getRandomWord() {
+    const sixLetterWords = objectArray.filter(word => word.length == 6);
+    const index = randomIndex(sixLetterWords.length);
+    return sixLetterWords[index].word;
   }
 
   function randomIndex(length) {
@@ -105,14 +107,13 @@ export default function App() {
   // const wordList = extractData();
   // console.log(wordList);
   // console.log("Object", objectArray);
-  console.log(shuffleWord("abcdef"));
-  console.log(findAllWords("abcdef"));
-  const word = shuffleWord("abcdef");
-  const allWords = findAllWords(word);
-  const allWordElts = allWords.map(word => <p>{word}</p>)
+  const word = getRandomWord();
+  console.log("Random Word: ", word);
+  // const allWords = findAllWords(word);
+  // const allWordElts = allWords.map(word => <p>{word}</p>)
   return (
     <div>
-      <h1>{word}</h1>
+      <h1>{shuffleWord(word)}</h1>
       {allWordElts}
     </div>
   )
