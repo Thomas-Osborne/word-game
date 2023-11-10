@@ -7,18 +7,6 @@ export default function App() {
   const [sortedWords, setSortedWords] = useState([]);
   const [chosenWord, setChosenWord] = useState("SPHERE");
 
-  useEffect(() => {{
-    fetch(raw)
-      .then(r => r.text())
-      .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
-    }
-    setSortedWords(textArray.sort(sortWords).map(word => ({"name": word.toUpperCase(), "found": false})));
-    // setChosenWord(getRandomWord());
-    console.log("text", textArray);
-    console.log("sorted", sortedWords);
-    console.log("word", chosenWord);
-  }, [])
-
   function reduceWords(word) {
     return (word.length >= 3 && word.length <= 6)
   }
@@ -103,6 +91,17 @@ export default function App() {
     return words.sort(sortWords);
   }
 
+  function generateWordList() {{
+    fetch(raw) 
+      .then(r => r.text())
+      .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
+    }
+    setSortedWords(textArray.sort(sortWords).map(word => ({"name": word.toUpperCase(), "found": false})));
+    console.log("text", textArray);
+    console.log("sorted", sortedWords);
+    console.log("word", chosenWord);
+  }
+
   function generateNewWord() {
     setChosenWord(getRandomWord);
   }
@@ -113,7 +112,8 @@ export default function App() {
 
   return (
     <div>
-      <button onClick = {generateNewWord}>Click here!</button>
+      <button onClick = {generateWordList}>Generate Word List</button>
+      <button onClick = {generateNewWord}>Generate Words</button>
       <h1>{shuffleWord(chosenWord)}</h1>
       {allWordsElts}
     </div>
