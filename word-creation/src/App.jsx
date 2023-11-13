@@ -2,8 +2,6 @@ import raw from "../../words_alpha.txt"
 import {useState, useEffect} from "react"
 
 export default function App() {
-
-  const [textArray, setTextArray] = useState([]);
   const [sortedWords, setSortedWords] = useState([]);
   const [chosenWord, setChosenWord] = useState("SPHERE");
 
@@ -94,10 +92,11 @@ export default function App() {
   function generateWordList() {{
     fetch(raw) 
       .then(r => r.text())
-      .then(text => setTextArray(text.split("\r\n").filter(reduceWords)));
+      .then(text => {
+        const textArray = text.split("\r\n").filter(reduceWords)
+        setSortedWords(textArray.sort(sortWords).map(word => ({"name": word.toUpperCase(), "found": false})));
+      });
     }
-    setSortedWords(textArray.sort(sortWords).map(word => ({"name": word.toUpperCase(), "found": false})));
-    console.log("text", textArray);
     console.log("sorted", sortedWords);
     console.log("word", chosenWord);
   }
