@@ -13,8 +13,7 @@ export default function App() {
     console.log("Hello");
     const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
     console.log(sixLetterWords);
-    console.log(sixLetterWords[250].name);
-    const index = randomIndex(sortedWords.length);
+    const index = randomIndex(sixLetterWords.length);
     console.log(index);
     console.log(sixLetterWords[index]);
     setChosenWord(sixLetterWords[index].name);
