@@ -1,21 +1,13 @@
-import raw from "../../words_alpha.txt"
+import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
 
 export default function App() {
-  const [sortedWords, setSortedWords] = useState([]);
   const [chosenWord, setChosenWord] = useState("SPHERE");
 
-  function reduceWords(word) {
-    return (word.length >= 3 && word.length <= 6)
-  }
 
   function getRandomWord() {
-    console.log("Hello");
     const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
-    console.log(sixLetterWords);
     const index = randomIndex(sixLetterWords.length);
-    console.log(index);
-    console.log(sixLetterWords[index]);
     setChosenWord(sixLetterWords[index].name);
   }
 
@@ -93,26 +85,12 @@ export default function App() {
     return words.sort(sortWords);
   }
 
-  function generateWordList() {{
-    fetch(raw) 
-      .then(r => r.text())
-      .then(text => {
-        const textArray = text.split("\r\n").filter(reduceWords)
-        setSortedWords(textArray.sort(sortWords).map(word => ({"name": word.toUpperCase(), "found": false})));
-      });
-    }
-    console.log("sorted", sortedWords);
-  }
-
-  console.log("Chosen Word", chosenWord);
   const allWords = findAllWords(chosenWord);
-  console.log("all", allWords);
   const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
 
   return (
     <div>
-      <button onClick = {generateWordList}>Generate Word List</button>
-      <button onClick = {getRandomWord}>Generate Words</button>
+      <button onClick = {getRandomWord}>Generate New Word</button>
       <h1>{shuffleWord(chosenWord)}</h1>
       {allWordsElts}
     </div>
