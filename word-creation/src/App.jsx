@@ -86,13 +86,20 @@ export default function App() {
   }
 
   const allWords = findAllWords(chosenWord);
-  const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
+  const allWordsElts = allWords.map(word => <p className="available-words" key={word}>{word}</p>);
 
   return (
     <div>
-      <button onClick = {getRandomWord}>Generate New Word</button>
-      <h1>{shuffleWord(chosenWord)}</h1>
-      {allWordsElts}
+      <header className="header">
+        <h2 className="header-title">Word Game</h2>
+      </header>
+      <main>
+        <div className="container">
+          <button onClick = {getRandomWord}>Generate New Word</button>
+          <h1 className="chosen-word">{shuffleWord(chosenWord)}</h1>
+          {allWordsElts}
+        </div>
+      </main>
     </div>
   )
 }

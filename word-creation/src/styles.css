@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+main {
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
+    color: black;
+    padding: 20px;
+}
+
+.header-title {
+    text-align: center;
+    margin: auto;
+}
+
+.container {
+    width: 550px;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+h1 {
+    color: red;
+}
