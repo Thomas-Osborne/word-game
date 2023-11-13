@@ -2,8 +2,8 @@ import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
 
 export default function App() {
-  const [chosenWord, setChosenWord] = useState("SPHERE");
-
+  const [chosenWord, setChosenWord] = useState("");
+  useEffect(() => getRandomWord(), []);
 
   function getRandomWord() {
     const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
