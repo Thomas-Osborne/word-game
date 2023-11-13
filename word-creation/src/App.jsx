@@ -10,9 +10,14 @@ export default function App() {
   }
 
   function getRandomWord() {
+    console.log("Hello");
     const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
+    console.log(sixLetterWords);
+    console.log(sixLetterWords[250].name);
     const index = randomIndex(sortedWords.length);
-    return sixLetterWords[index].name;
+    console.log(index);
+    console.log(sixLetterWords[index]);
+    setChosenWord(sixLetterWords[index].name);
   }
 
   function randomIndex(length) {
@@ -98,13 +103,9 @@ export default function App() {
       });
     }
     console.log("sorted", sortedWords);
-    console.log("word", chosenWord);
   }
 
-  function generateNewWord() {
-    setChosenWord(getRandomWord);
-  }
-
+  console.log("Chosen Word", chosenWord);
   const allWords = findAllWords(chosenWord);
   console.log("all", allWords);
   const allWordsElts = allWords.map(word => <p key={word}>{word}</p>);
@@ -112,7 +113,7 @@ export default function App() {
   return (
     <div>
       <button onClick = {generateWordList}>Generate Word List</button>
-      <button onClick = {generateNewWord}>Generate Words</button>
+      <button onClick = {getRandomWord}>Generate Words</button>
       <h1>{shuffleWord(chosenWord)}</h1>
       {allWordsElts}
     </div>
