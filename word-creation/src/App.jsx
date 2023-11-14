@@ -83,7 +83,7 @@ export default function App() {
         }
       }
     }
-    return words.sort(sortWords);
+    return words.sort(sortWords).map(word => ({"name": word, "found": false}));
   }
 
   const allWords = findAllWords(chosenWord);
