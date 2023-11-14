@@ -19,6 +19,7 @@ export default function App() {
 
   useEffect(() => {
     setFilteredWords(findAllWords(chosenWord));
+    setScore({points: 0, totalFound: 0});
   }, [chosenWord])
 
   function getRandomWord() {
