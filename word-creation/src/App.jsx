@@ -182,7 +182,6 @@ export default function App() {
             <button onClick={checkWord}>Submit</button>
           </div>
           <h1 className="chosen-word">{shuffledWord}</h1>
-          {inputtedWord}
           <div className="word-list">
             {filteredWordsElts}
           </div>
