@@ -1,5 +1,6 @@
 import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
+import Word from "./Word"
 
 export default function App() {
   const [chosenWord, setChosenWord] = useState("");
@@ -86,7 +87,7 @@ export default function App() {
   }
 
   const allWords = findAllWords(chosenWord);
-  const allWordsElts = allWords.map(word => <p className="available-words" key={word}>{word}</p>);
+  const allWordsElts = allWords.map(word => <Word word={word} key={word}/>);
 
   return (
     <div>
