@@ -107,7 +107,6 @@ export default function App() {
 
   function checkWord(event) {
     console.log("filtered words", filteredWords);
-    event.preventDefault();
     const capitalisedWord = inputtedWord.replace(/\s/g,'').toUpperCase();
     if (capitalisedWord.length == 0) {
       console.log("Please enter a word.")
@@ -140,6 +139,13 @@ export default function App() {
               name="inputtedWord" 
               value={inputtedWord} 
               onChange={handleChange}
+              onKeyDown={
+                (e) => {
+                  if (e.key === "Enter") {
+                    checkWord();
+                  }
+                }
+              }
             />
             <button onClick={checkWord}>Submit</button>
           </div>
