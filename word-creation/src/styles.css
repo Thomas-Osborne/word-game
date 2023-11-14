@@ -48,9 +48,15 @@ body {
     background-color: #FFFFFF;
 }
 
+.word-list {
+    width: 25%;
+}
+
 .word-container {
     padding-left: 10px;
     padding-right: 10px;
+    margin: 10px;
     border: 2px solid black;
     border-radius: 10px;
+    text-align: center;
 }

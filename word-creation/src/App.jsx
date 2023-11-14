@@ -98,7 +98,9 @@ export default function App() {
         <div className="container">
           <button className="button-new-word" onClick = {getRandomWord}>Generate New Word</button>
           <h1 className="chosen-word">{shuffleWord(chosenWord)}</h1>
-          {allWordsElts}
+          <div className="word-list">
+            {allWordsElts}
+          </div>
         </div>
       </main>
     </div>
