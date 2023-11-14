@@ -1,6 +1,7 @@
 import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
 import Word from "./components/Word"
+import Alert from "./components/Alert"
 
 export default function App() {
   const [chosenWord, setChosenWord] = useState("");
@@ -12,6 +13,7 @@ export default function App() {
   const [inputtedWord, setInputtedWord] = useState("");
 
   const [score, setScore] = useState({points: 0, totalFound: 0});
+  const [alert, setAlert] = useState("Please enter a word.");
 
   useEffect(() => {
     getRandomWord();
@@ -112,21 +114,21 @@ export default function App() {
     console.log("filtered words", filteredWords);
     const capitalisedWord = inputtedWord.replace(/\s/g,'').toUpperCase();
     if (capitalisedWord.length == 0) {
-      console.log("Please enter a word.")
+      setAlert("Please enter a word.")
     } else if (capitalisedWord.length < 3) {
-      console.log(`The word ${capitalisedWord} is too short.`);
+      setAlert(`The word ${capitalisedWord} is too short.`);
     } else if (capitalisedWord.length > 6) {
-      console.log(`The word ${capitalisedWord} is too long.`);
+      setAlert(`The word ${capitalisedWord} is too long.`);
     } else if (!isWord(capitalisedWord, sortedWords)) {
-      console.log(`The word ${capitalisedWord} is not a word.`)
+      setAlert(`The word ${capitalisedWord} is not a word.`)
     } else if (!isWord(capitalisedWord, filteredWords)){
-      console.log(`The word ${capitalisedWord} is not on the board.`)
+      setAlert(`The word ${capitalisedWord} is not on the board.`)
     } else {
       const word = filteredWords.find(word => word.name === capitalisedWord);
       if (word.found) {
-        console.log(`The word ${capitalisedWord} has already been found!`)
+        setAlert(`The word ${capitalisedWord} has already been found!`)
       } else {
-        console.log(`Good job! The word ${capitalisedWord} is on the board.`);
+        setAlert(`Good job! The word ${capitalisedWord} is on the board.`);
         setFilteredWords(prevFilteredWords => (
           prevFilteredWords.map(word => (
             word.name === capitalisedWord ? {...word, found: true} : word
@@ -140,10 +142,15 @@ export default function App() {
 
   function applyScore(length) {
     if (length === 6) {
-      setScore(prevScore => ({points: prevScore.points + 2 * length, totalFound: prevScore.totalFound + 1})); 
-      // double points for max length word
+      setScore(prevScore => ({
+        points: prevScore.points + 2 * length, // double points for max length word
+        totalFound: prevScore.totalFound + 1
+      }));
     } else {
-      setScore(prevScore => ({points: prevScore.points + length, totalFound: prevScore.totalFound + 1}));
+      setScore(prevScore => ({
+        points: prevScore.points + length,
+        totalFound: prevScore.totalFound + 1
+      }));
     }
   }
 
@@ -156,6 +163,7 @@ export default function App() {
         <div className="container">
           <button className="button-new-word" onClick={getRandomWord}>Generate New Word</button>
           <p>Score: {score.points} Words Found: {score.totalFound}</p>
+          <Alert message={alert}/>
           <div>
             <input 
               type="text" 
