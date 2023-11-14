@@ -1,6 +1,6 @@
 import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
-import Word from "./Word"
+import Word from "./components/Word"
 
 export default function App() {
   const [chosenWord, setChosenWord] = useState("");
