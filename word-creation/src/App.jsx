@@ -13,7 +13,7 @@ export default function App() {
   const [inputtedWord, setInputtedWord] = useState("");
 
   const [score, setScore] = useState({points: 0, totalFound: 0});
-  const [alert, setAlert] = useState("Please enter a word.");
+  const [alert, setAlert] = useState({message: "Please enter a word.", error: true});
 
   useEffect(() => {
     getRandomWord();
@@ -114,21 +114,21 @@ export default function App() {
     console.log("filtered words", filteredWords);
     const capitalisedWord = inputtedWord.replace(/\s/g,'').toUpperCase();
     if (capitalisedWord.length == 0) {
-      setAlert("Please enter a word.")
+      setAlert({message: "Please enter a word.", error: true})
     } else if (capitalisedWord.length < 3) {
-      setAlert(`The word ${capitalisedWord} is too short.`);
+      setAlert({message: `The word ${capitalisedWord} is too short.`, error: true});
     } else if (capitalisedWord.length > 6) {
-      setAlert(`The word ${capitalisedWord} is too long.`);
+      setAlert({message: `The word ${capitalisedWord} is too long.`, error: true});
     } else if (!isWord(capitalisedWord, sortedWords)) {
-      setAlert(`The word ${capitalisedWord} is not a word.`)
+      setAlert({message: `The word ${capitalisedWord} is not a word.`, error: true});
     } else if (!isWord(capitalisedWord, filteredWords)){
-      setAlert(`The word ${capitalisedWord} is not on the board.`)
+      setAlert({message: `The word ${capitalisedWord} is not on the board.`, error: true});
     } else {
       const word = filteredWords.find(word => word.name === capitalisedWord);
       if (word.found) {
-        setAlert(`The word ${capitalisedWord} has already been found!`)
+        setAlert({message: `The word ${capitalisedWord} has already been found.`, error: true})
       } else {
-        setAlert(`Good job! The word ${capitalisedWord} is on the board.`);
+        setAlert({message: `The word ${capitalisedWord} is on the board!`, error: false});
         setFilteredWords(prevFilteredWords => (
           prevFilteredWords.map(word => (
             word.name === capitalisedWord ? {...word, found: true} : word
@@ -163,7 +163,7 @@ export default function App() {
         <div className="container">
           <button className="button-new-word" onClick={getRandomWord}>Generate New Word</button>
           <p>Score: {score.points} Words Found: {score.totalFound}</p>
-          <Alert message={alert}/>
+          <Alert alert={alert}/>
           <div>
             <input 
               type="text" 
