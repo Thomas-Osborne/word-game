@@ -4,7 +4,16 @@ import Word from "./components/Word"
 
 export default function App() {
   const [chosenWord, setChosenWord] = useState("");
-  useEffect(() => getRandomWord(), []);
+  const shuffledWord = shuffleWord(chosenWord);
+
+  const [allWords, setAllWords] = useState([]);
+  const allWordsElts = allWords.map(word => <Word word={word} key={word}/>);
+
+  const [inputtedWord, setInputtedWord] = useState("");
+  useEffect(() => {
+    getRandomWord();
+    setAllWords(findAllWords(chosenWord));
+  }, []);
 
   function getRandomWord() {
     const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
@@ -68,8 +77,8 @@ export default function App() {
     return permutations.sort(sortWords);
   }
 
-  function isWord(word) {
-    return sortedWords.map(word => word.name).includes(word);
+  function isWord(word, wordList) {
+    return wordList.map(word => word.name).includes(word);
   }
 
   function findAllWords(word) {
@@ -78,7 +87,7 @@ export default function App() {
     for (const subset of subsets) {
       const permutations = getPermutations(subset);
       for (const permutation of permutations) {
-        if (isWord(permutation) && !(words.includes(permutation))) {
+        if (isWord(permutation, sortedWords) && !(words.includes(permutation))) {
           words.push(permutation);
         }
       }
@@ -86,8 +95,31 @@ export default function App() {
     return words.sort(sortWords).map(word => ({"name": word, "found": false}));
   }
 
-  const allWords = findAllWords(chosenWord);
-  const allWordsElts = allWords.map(word => <Word word={word} key={word}/>);
+  function handleChange(event) {
+    console.log(event.target.value);
+    setInputtedWord(event.target.value);
+    console.log("inputted word", inputtedWord);
+  }
+
+  function checkWord(event) {
+    console.log("all words", allWords);
+    event.preventDefault();
+    const capitalisedWord = inputtedWord.toUpperCase();
+    if (capitalisedWord.length == 0) {
+      console.log("Please enter a word.")
+    } else if (capitalisedWord.length < 3) {
+      console.log(`The word ${capitalisedWord} is too short.`);
+    } else if (capitalisedWord.length > 6) {
+      console.log(`The word ${capitalisedWord} is too long.`);
+    } else if (!isWord(capitalisedWord, sortedWords)) {
+      console.log(`The word ${capitalisedWord} is not a word.`)
+    } else if (!isWord(capitalisedWord, allWords)){
+      console.log(`The word ${capitalisedWord} is not on the board.`)
+    } else {
+      console.log(inputtedWord);
+      console.log(`Good job! The word ${capitalisedWord} is on the board.`);
+    }
+  }
 
   return (
     <div>
@@ -96,8 +128,19 @@ export default function App() {
       </header>
       <main>
         <div className="container">
-          <button className="button-new-word" onClick = {getRandomWord}>Generate New Word</button>
-          <h1 className="chosen-word">{shuffleWord(chosenWord)}</h1>
+          <button className="button-new-word" onClick={getRandomWord}>Generate New Word</button>
+          <div>
+            <input 
+              type="text" 
+              placeholder="Enter a word..." 
+              name="inputtedWord" 
+              value={inputtedWord} 
+              onChange={handleChange}
+            />
+            <button onClick={checkWord}>Submit</button>
+          </div>
+          <h1 className="chosen-word">{shuffledWord}</h1>
+          {inputtedWord}
           <div className="word-list">
             {allWordsElts}
           </div>

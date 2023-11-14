@@ -21,6 +21,10 @@ body {
     margin: auto;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
 .container {
     display: flex;
     flex-direction: column;
