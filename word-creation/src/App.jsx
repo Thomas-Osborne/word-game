@@ -119,8 +119,17 @@ export default function App() {
     } else if (!isWord(capitalisedWord, filteredWords)){
       console.log(`The word ${capitalisedWord} is not on the board.`)
     } else {
-      console.log(inputtedWord);
-      console.log(`Good job! The word ${capitalisedWord} is on the board.`);
+      const word = filteredWords.find(word => word.name === capitalisedWord);
+      if (word.found) {
+        console.log(`The word ${capitalisedWord} has already been found!`)
+      } else {
+        console.log(`Good job! The word ${capitalisedWord} is on the board.`);
+        setFilteredWords(prevFilteredWords => (
+          prevFilteredWords.map(word => (
+            word.name === capitalisedWord ? {...word, found: true} : word
+          ))
+        )); 
+      }
     }
   }
 
