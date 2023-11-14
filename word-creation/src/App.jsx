@@ -10,10 +10,14 @@ export default function App() {
   const allWordsElts = allWords.map(word => <Word word={word} key={word}/>);
 
   const [inputtedWord, setInputtedWord] = useState("");
+  
   useEffect(() => {
     getRandomWord();
-    setAllWords(findAllWords(chosenWord));
   }, []);
+
+  useEffect(() => {
+    setAllWords(findAllWords(chosenWord));
+  }, [chosenWord])
 
   function getRandomWord() {
     const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
