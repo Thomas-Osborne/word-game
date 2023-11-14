@@ -11,6 +11,8 @@ export default function App() {
 
   const [inputtedWord, setInputtedWord] = useState("");
 
+  const [score, setScore] = useState(0);
+
   useEffect(() => {
     getRandomWord();
   }, []);
@@ -129,9 +131,18 @@ export default function App() {
             word.name === capitalisedWord ? {...word, found: true} : word
           ))
         )); 
+        applyScore(capitalisedWord.length);
       }
     }
     setInputtedWord("");
+  }
+
+  function applyScore(length) {
+    if (length === 6) {
+      setScore(prevScore => prevScore + 2 * length); // double points for max length word
+    } else {
+      setScore(prevScore => prevScore + length);
+    }
   }
 
   return (
@@ -142,6 +153,7 @@ export default function App() {
       <main>
         <div className="container">
           <button className="button-new-word" onClick={getRandomWord}>Generate New Word</button>
+          <p>Score: {score}</p>
           <div>
             <input 
               type="text" 
