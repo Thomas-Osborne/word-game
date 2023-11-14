@@ -131,6 +131,7 @@ export default function App() {
         )); 
       }
     }
+    setInputtedWord("");
   }
 
   return (
