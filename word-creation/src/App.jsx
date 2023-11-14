@@ -6,17 +6,17 @@ export default function App() {
   const [chosenWord, setChosenWord] = useState("");
   const shuffledWord = shuffleWord(chosenWord);
 
-  const [allWords, setAllWords] = useState([]);
-  const allWordsElts = allWords.map(word => <Word word={word} key={word}/>);
+  const [filteredWords, setFilteredWords] = useState([]);
+  const filteredWordsElts = filteredWords.map(word => <Word word={word} key={word}/>);
 
   const [inputtedWord, setInputtedWord] = useState("");
-  
+
   useEffect(() => {
     getRandomWord();
   }, []);
 
   useEffect(() => {
-    setAllWords(findAllWords(chosenWord));
+    setFilteredWords(findAllWords(chosenWord));
   }, [chosenWord])
 
   function getRandomWord() {
@@ -106,7 +106,7 @@ export default function App() {
   }
 
   function checkWord(event) {
-    console.log("all words", allWords);
+    console.log("filtered words", filteredWords);
     event.preventDefault();
     const capitalisedWord = inputtedWord.replace(/\s/g,'').toUpperCase();
     if (capitalisedWord.length == 0) {
@@ -117,7 +117,7 @@ export default function App() {
       console.log(`The word ${capitalisedWord} is too long.`);
     } else if (!isWord(capitalisedWord, sortedWords)) {
       console.log(`The word ${capitalisedWord} is not a word.`)
-    } else if (!isWord(capitalisedWord, allWords)){
+    } else if (!isWord(capitalisedWord, filteredWords)){
       console.log(`The word ${capitalisedWord} is not on the board.`)
     } else {
       console.log(inputtedWord);
@@ -146,7 +146,7 @@ export default function App() {
           <h1 className="chosen-word">{shuffledWord}</h1>
           {inputtedWord}
           <div className="word-list">
-            {allWordsElts}
+            {filteredWordsElts}
           </div>
         </div>
       </main>
