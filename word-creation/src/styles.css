@@ -7,6 +7,11 @@ body {
     margin: 0;
 }
 
+button:hover:enabled {
+    cursor: pointer;
+    background-color: cyan;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -116,8 +121,3 @@ body {
     font-weight: 700;
     width: 40px;
 }
-
-button:hover {
-    cursor: pointer;
-    background-color: cyan;
-  }
