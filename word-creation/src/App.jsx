@@ -6,8 +6,7 @@ import Alert from "./components/Alert"
 export default function App() {
   const MAX_LENGTH = 6;
 
-  const [chosenWord, setChosenWord] = useState("");
-  const shuffledWord = shuffleWord(chosenWord);
+  const [chosenWord, setChosenWord] = useState({actual: "", shuffled: ""});
 
   const [filteredWords, setFilteredWords] = useState([]);
   const filteredWordsElts = filteredWords.map(word => <Word word={word} key={word}/>);
@@ -22,14 +21,15 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    setFilteredWords(findAllWords(chosenWord));
+    setFilteredWords(findAllWords(chosenWord.actual));
     setScore({points: 0, totalFound: 0});
   }, [chosenWord])
 
   function getRandomWord() {
     const maxLengthWords = sortedWords.filter(word => word.name.length == MAX_LENGTH);
     const index = randomIndex(maxLengthWords.length);
-    setChosenWord(maxLengthWords[index].name);
+    const newWord = maxLengthWords[index].name;
+    setChosenWord({actual: newWord, shuffled: shuffleWord(newWord)});
   }
 
   function randomIndex(length) {
@@ -183,7 +183,7 @@ export default function App() {
             />
             <button onClick={checkWord}>Submit</button>
           </div>
-          <h1 className="chosen-word">{shuffledWord}</h1>
+          <h1 className="chosen-word">{chosenWord.shuffled}</h1>
           <div className="word-list">
             {filteredWordsElts}
           </div>
