@@ -50,10 +50,11 @@ body {
     letter-spacing: 10px;
 }
 
-.button-new-word {
+.button-menu {
     font-size: 1.5em;
     font-weight: 700;
     padding: 10px;
+    margin: 0 5px;
     border-radius: 5px;
     background-color: #FFFFFF;
 }

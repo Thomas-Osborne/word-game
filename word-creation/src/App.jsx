@@ -168,8 +168,10 @@ export default function App() {
       </header>
       <main>
         <div className="container">
-          <button className="button-new-word" onClick={getRandomWord}>Generate New Word</button>
-          <button className="button-reveal" onClick={revealAll}>Give Up</button>
+          <div>
+            <button className="button-menu inline-block" onClick={getRandomWord}>Generate New Word</button>
+            <button className="button-menu inline-block" onClick={revealAll}>Give Up</button>
+          </div>
           <div className="score-container">
             <p className="inline-block score-text">Score: {score.points}</p>
             <p className="inline-block score-text">Words Found: {score.totalFound}</p>
