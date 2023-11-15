@@ -67,8 +67,8 @@ export default function App() {
     // Source: https://stackoverflow.com/questions/9960908/permutations-in-javascript
     word = word.split("");
     let length = word.length,
-    permutations = [word.slice()],
     c = new Array(length).fill(0),
+    permutations = [word.join("").slice()],
     i = 1, k, p;
 
     while (i < length) {
