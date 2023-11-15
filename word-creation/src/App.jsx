@@ -4,6 +4,8 @@ import Word from "./components/Word"
 import Alert from "./components/Alert"
 
 export default function App() {
+  const MAX_LENGTH = 6;
+
   const [chosenWord, setChosenWord] = useState("");
   const shuffledWord = shuffleWord(chosenWord);
 
@@ -25,9 +27,9 @@ export default function App() {
   }, [chosenWord])
 
   function getRandomWord() {
-    const sixLetterWords = sortedWords.filter(word => word.name.length == 6);
-    const index = randomIndex(sixLetterWords.length);
-    setChosenWord(sixLetterWords[index].name);
+    const maxLengthWords = sortedWords.filter(word => word.name.length == MAX_LENGTH);
+    const index = randomIndex(maxLengthWords.length);
+    setChosenWord(maxLengthWords[index].name);
   }
 
   function randomIndex(length) {
