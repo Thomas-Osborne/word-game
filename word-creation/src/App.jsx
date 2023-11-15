@@ -14,7 +14,7 @@ export default function App() {
   const [inputtedWord, setInputtedWord] = useState("");
 
   const [score, setScore] = useState({points: 0, totalFound: 0});
-  const [alert, setAlert] = useState({message: "Please enter a word.", error: true});
+  const [alert, setAlert] = useState({message: "", error: true});
 
   useEffect(() => {
     getRandomWord();
@@ -23,6 +23,7 @@ export default function App() {
   useEffect(() => {
     setFilteredWords(findAllWords(chosenWord.actual));
     setScore({points: 0, totalFound: 0});
+    setAlert({message: "Please enter a word.", error: true})
   }, [chosenWord])
 
   function getRandomWord() {
