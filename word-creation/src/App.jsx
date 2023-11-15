@@ -32,6 +32,7 @@ export default function App() {
   useEffect(() => {
     if (isRevealed) {
       setFilteredWords(prevFilteredWords => (prevFilteredWords.map(word => ({...word, revealed: true}))));
+      setAlert({message: "Thanks for playing!", error: false});
     }
   }, [isRevealed])
 
