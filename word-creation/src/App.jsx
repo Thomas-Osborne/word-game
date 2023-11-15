@@ -104,7 +104,7 @@ export default function App() {
         }
       }
     }
-    return words.sort(sortWords).map(word => ({"name": word, "found": false}));
+    return words.sort(sortWords).map(word => ({"name": word, "revealed": false, "found": false}));
   }
 
   function handleChange(event) {
@@ -134,7 +134,7 @@ export default function App() {
         setAlert({message: `The word ${capitalisedWord} is on the board!`, error: false});
         setFilteredWords(prevFilteredWords => (
           prevFilteredWords.map(word => (
-            word.name === capitalisedWord ? {...word, found: true} : word
+            word.name === capitalisedWord ? {...word, revealed: true, found: true} : word
           ))
         )); 
         applyScore(capitalisedWord.length);
