@@ -16,6 +16,8 @@ export default function App() {
   const [score, setScore] = useState({points: 0, totalFound: 0});
   const [alert, setAlert] = useState({message: "", error: true});
 
+  const [isRevealed, setIsRevealed] = useState(false);
+
   useEffect(() => {
     getRandomWord();
   }, []);
@@ -24,7 +26,14 @@ export default function App() {
     setFilteredWords(findAllWords(chosenWord.actual));
     setScore({points: 0, totalFound: 0});
     setAlert({message: "Please enter a word.", error: true})
+    setIsRevealed(false);
   }, [chosenWord])
+
+  useEffect(() => {
+    if (isRevealed) {
+      setFilteredWords(prevFilteredWords => (prevFilteredWords.map(word => ({...word, revealed: true}))));
+    }
+  }, [isRevealed])
 
   function getRandomWord() {
     const maxLengthWords = sortedWords.filter(word => word.name.length == MAX_LENGTH);
@@ -157,10 +166,6 @@ export default function App() {
     }
   }
 
-  function revealAll() {
-    setFilteredWords(prevFilteredWords => (prevFilteredWords.map(word => ({...word, revealed: true}))));
-  }
-
   return (
     <div>
       <header className="header">
@@ -170,7 +175,7 @@ export default function App() {
         <div className="container">
           <div>
             <button className="button-menu inline-block" onClick={getRandomWord}>Generate New Word</button>
-            <button className="button-menu inline-block" onClick={revealAll}>Give Up</button>
+            <button className="button-menu inline-block" onClick={() => setIsRevealed(true)}>Give Up</button>
           </div>
           <div className="score-container">
             <p className="inline-block score-text">Score: {score.points}</p>
