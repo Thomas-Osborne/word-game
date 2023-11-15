@@ -125,7 +125,7 @@ export default function App() {
 
   function checkWord(event) {
     console.log("filtered words", filteredWords);
-    const capitalisedWord = inputtedWord.replace(/\s/g,'').toUpperCase();
+    const capitalisedWord = inputtedWord.replace(/[^a-zA-Z]/g,'').toUpperCase();
     if (capitalisedWord.length == 0) {
       setAlert({message: "Please enter a word.", error: true})
     } else if (capitalisedWord.length < 3) {
