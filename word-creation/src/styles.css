@@ -28,7 +28,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 1000px;
     margin: 0 auto;
     background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
     border: 2px solid black;
@@ -63,7 +63,7 @@ body {
     margin: 20px;
     border-radius: 10px;
     border: 3px solid;
-    width: 70%;    
+    width: 40%;    
 }
 
 .alert-text {
@@ -73,15 +73,17 @@ body {
 }
 
 .word-list {
-    width: 50%;
+    width: 75%;
+    column-count: 2;
 }
 
 .word-container {
     padding: 10px 10px;
-    margin: 10px;
+    margin: 20px 0;
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;
+    width: 350px;
 }
 
 .letter {
