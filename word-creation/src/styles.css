@@ -39,6 +39,12 @@ body {
     justify-content: center;
 }
 
+.score-text {
+    padding: 0 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
 .chosen-word {
     color: red;
     letter-spacing: 10px;
