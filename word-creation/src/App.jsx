@@ -157,6 +157,10 @@ export default function App() {
     }
   }
 
+  function revealAll() {
+    setFilteredWords(prevFilteredWords => (prevFilteredWords.map(word => ({...word, revealed: true}))));
+  }
+
   return (
     <div>
       <header className="header">
@@ -165,6 +169,7 @@ export default function App() {
       <main>
         <div className="container">
           <button className="button-new-word" onClick={getRandomWord}>Generate New Word</button>
+          <button className="button-reveal" onClick={revealAll}>Give Up</button>
           <div className="score-container">
             <p className="inline-block score-text">Score: {score.points}</p>
             <p className="inline-block score-text">Words Found: {score.totalFound}</p>
