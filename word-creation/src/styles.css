@@ -72,6 +72,27 @@ body {
     text-align: center;
 }
 
+.guess-elements > * {
+    margin: 0 5px;
+    font-size: 1.3em;
+    border-radius: 10px;
+}
+
+.input-guess {
+    border: none;
+    padding: 10px;
+}
+
+.input-guess:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.submit-guess {
+    border: 2px solid black;
+    padding: 10px 5px;
+}
+
 .word-list {
     width: 75%;
     column-count: 2;

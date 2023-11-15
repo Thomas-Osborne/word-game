@@ -170,8 +170,9 @@ export default function App() {
             <p className="inline-block score-text">Words Found: {score.totalFound}</p>
           </div>
           <Alert alert={alert}/>
-          <div>
-            <input 
+          <div className="guess-elements">
+            <input
+              className="input-guess"
               type="text" 
               placeholder="Enter a word..." 
               name="inputtedWord" 
@@ -185,7 +186,7 @@ export default function App() {
                 }
               }
             />
-            <button onClick={checkWord}>Submit</button>
+            <button className="submit-guess" onClick={checkWord}>Submit</button>
           </div>
           <h1 className="chosen-word">{chosenWord.shuffled}</h1>
           <div className="word-list">
