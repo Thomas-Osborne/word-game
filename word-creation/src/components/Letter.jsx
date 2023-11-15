@@ -1,5 +1,5 @@
 export default function Letter(props) {
     return (
-        <span className="letter">{props.found ? props.letter : "?"}</span>
+        <span className="letter inline-block">{props.found ? props.letter : "?"}</span>
     )
 }
