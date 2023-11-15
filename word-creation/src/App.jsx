@@ -186,7 +186,7 @@ export default function App() {
             <input
               className="input-guess"
               type="text" 
-              placeholder="Enter a word..." 
+              placeholder={isRevealed ? "" : "Enter a word..."} 
               name="inputtedWord" 
               value={inputtedWord} 
               onChange={handleChange}
@@ -197,8 +197,12 @@ export default function App() {
                   }
                 }
               }
+              disabled={isRevealed}
             />
-            <button className="submit-guess" onClick={checkWord}>Submit</button>
+            <button 
+              className="submit-guess"
+              onClick={checkWord}
+              disabled={isRevealed}>Submit</button>
           </div>
           <h1 className="chosen-word">{chosenWord.shuffled}</h1>
           <div className="word-list">
