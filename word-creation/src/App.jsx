@@ -1,8 +1,8 @@
 import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
-// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 import Header from "./components/Header"
+import Instructions from "./components/Instructions"
 import Word from "./components/Word"
 import Alert from "./components/Alert"
 
@@ -176,6 +176,7 @@ export default function App() {
       <main>
         <div className="container">
           <div>
+          <Instructions className="inline-block"/>
             <button className="button-menu inline-block" onClick={getRandomWord}>Generate New Word</button>
             <button className="button-menu inline-block" onClick={() => setIsRevealed(true)}>Give Up</button>
           </div>
