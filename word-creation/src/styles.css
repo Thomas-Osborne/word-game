@@ -2,9 +2,15 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    height: 100%;
+    overflow: hidden;
 }
 
 button:hover:enabled {
@@ -56,6 +62,7 @@ button:hover:enabled {
     background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
     color: black;
     padding: 20px;
+    width: 100%;
 }
 
 .header-title {
@@ -67,10 +74,15 @@ button:hover:enabled {
     display: inline-block;
 }
 
+.app {
+    height: 100%;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     width: 1000px;
+    height: 100%;
     margin: 0 auto;
     background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
     border: 2px solid black;
@@ -138,8 +150,14 @@ button:hover:enabled {
     font-weight: 500
 }
 
-.word-list {
+.word-wrapper {
+    max-height: 500px;
     width: 75%;
+    overflow: auto;
+}
+
+.word-list {
+    display: block;
     column-count: 2;
 }
 
