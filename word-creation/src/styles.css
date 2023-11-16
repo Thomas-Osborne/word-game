@@ -32,7 +32,7 @@ button:hover:enabled {
     color: black;
 }
 
-.button-icon:hover {
+.button-icon:hover:enabled {
     transform: rotate(10deg);
 }
 
