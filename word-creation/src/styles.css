@@ -12,6 +12,16 @@ button:hover:enabled {
     background-color: cyan;
 }
 
+.icon-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.icon-item {
+    display: inline;
+}
+
 .button-icon {
     border: none;
     background: none;
