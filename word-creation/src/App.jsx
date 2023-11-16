@@ -13,6 +13,7 @@ import Icon from "./components/Icon"
 import Instructions from "./components/Instructions"
 import GiveUp from "./components/GiveUp"
 import Replay from "./components/Replay"
+import Counter from "./components/Counter"
 import Word from "./components/Word"
 import Alert from "./components/Alert"
 
@@ -235,8 +236,8 @@ export default function App() {
             />
           </div>
           <div className="score-container">
-            <p className="inline-block score-text">Score: {score.points}</p>
-            <p className="inline-block score-text">Words Found: {score.totalFound}</p>
+            <Counter type="score" score={score.points}/>
+            <Counter type="words found" score={score.totalFound}/>
           </div>
           <Alert alert={alert}/>
           <div className="guess-elements">
