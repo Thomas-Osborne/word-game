@@ -1,4 +1,5 @@
 import { sortedWords } from "./sorted-words"
+import { commonSixLetters } from "./components/common-six-letter"
 import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlay, faCirclePause, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
@@ -77,9 +78,8 @@ export default function App() {
   }, [timer])
 
   function getRandomWord() {
-    const maxLengthWords = sortedWords.filter(word => word.name.length == MAX_LENGTH);
-    const index = randomIndex(maxLengthWords.length);
-    const newWord = maxLengthWords[index].name;
+    const index = randomIndex(commonSixLetters.length);
+    const newWord = commonSixLetters[index];
     setChosenWord({actual: newWord, shuffled: shuffleWord(newWord)});
   }
 
