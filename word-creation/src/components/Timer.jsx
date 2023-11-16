@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef} from "react"
 
-export default function Timer() {
-    const [timer, setTimer] = useState("03:00")
+export default function Timer(props) {
     const ref = useRef(null);
 
     //Source: https://www.geeksforgeeks.org/how-to-create-a-countdown-timer-using-reactjs/
@@ -15,9 +14,9 @@ export default function Timer() {
     }
 
     function startTimer(event) {
-        let { total, hours, minutes, seconds } = timeLeft(event);
+        let { total, minutes, seconds } = timeLeft(event);
         if (total >= 0) {
-            setTimer(
+            props.setTimer(
                 (minutes > 9 ? minutes : "0" + minutes) + ":"
                 + (seconds > 9 ? seconds : "0" + seconds)
             )
@@ -25,7 +24,7 @@ export default function Timer() {
     }
 
     function clearTimer(event) {
-        setTimer("03:00");
+        props.setTimer("00:30");
  
         if (ref.current) clearInterval(ref.current);
         const id = setInterval(() => {
@@ -38,7 +37,7 @@ export default function Timer() {
     function getTotalTime() {
         let total = new Date();
  
-        total.setSeconds(total.getSeconds() + 0 * 3600 + 3 * 60 + 0 * 0);
+        total.setSeconds(total.getSeconds() + 0 * 3600 + 0 * 60 + 30 * 1);
         return total;
     }
  
@@ -49,7 +48,7 @@ export default function Timer() {
 
     return (
         <div>
-            <h2>{timer}</h2>
+            <h2>{props.timer}</h2>
         </div>
     )
 }

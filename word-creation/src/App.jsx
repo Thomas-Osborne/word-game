@@ -41,6 +41,8 @@ export default function App() {
   const [music, setMusic] = useState(new Audio(guitarMusic));
   music.loop = true;
 
+  const [timer, setTimer] = useState("00:30")
+
   useEffect(() => {
     getRandomWord();
   }, []);
@@ -66,6 +68,13 @@ export default function App() {
       music.play();
     }
   }, [music, isMusicOn])
+
+  useEffect(() => {
+    console.log("rendered");
+    if (timer === "00:00") {
+      setIsRevealed(true);
+    }
+  }, [timer])
 
   function getRandomWord() {
     const maxLengthWords = sortedWords.filter(word => word.name.length == MAX_LENGTH);
@@ -221,7 +230,7 @@ export default function App() {
       <Header title="Word Game"/>
       <main>
         <div className="container">
-          <Timer />
+          <Timer timer={timer} setTimer={setTimer}/>
           <div className="menu-container">
             <Instructions max={MAX_LENGTH} className="inline-block" />
             <Replay restart={getRandomWord} className="inline-block" />
