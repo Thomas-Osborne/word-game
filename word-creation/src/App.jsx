@@ -262,8 +262,10 @@ export default function App() {
               disabled={isRevealed}>Submit</button>
           </div>
           <h1 className="chosen-word">{chosenWord.shuffled}</h1>
-          <div className="word-list">
-            {filteredWordsElts}
+          <div className="word-wrapper">  
+            <div className="word-list">
+              {filteredWordsElts}
+            </div>
           </div>
         </div>
       </main>
