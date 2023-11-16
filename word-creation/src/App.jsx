@@ -41,7 +41,7 @@ export default function App() {
   const [music, setMusic] = useState(new Audio(guitarMusic));
   music.loop = true;
 
-  const [timer, setTimer] = useState("00:30")
+  const [timer, setTimer] = useState("03:00")
 
   useEffect(() => {
     getRandomWord();
@@ -53,6 +53,7 @@ export default function App() {
     setIncrease({points: 0, totalFound: 0});
     setAlert({message: "Please enter a word.", error: true})
     setIsRevealed(false);
+    setTimer("03:00");
   }, [chosenWord])
 
   useEffect(() => {
@@ -70,7 +71,6 @@ export default function App() {
   }, [music, isMusicOn])
 
   useEffect(() => {
-    console.log("rendered");
     if (timer === "00:00") {
       setIsRevealed(true);
     }

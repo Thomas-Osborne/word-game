@@ -1,7 +1,11 @@
-import { useState, useEffect, useRef} from "react"
+import { useEffect, useRef} from "react"
 
 export default function Timer(props) {
     const ref = useRef(null);
+
+    useEffect(() => {
+
+    }, [props.timer])
 
     //Source: https://www.geeksforgeeks.org/how-to-create-a-countdown-timer-using-reactjs/
     function timeLeft(event) {
@@ -24,7 +28,7 @@ export default function Timer(props) {
     }
 
     function clearTimer(event) {
-        props.setTimer("00:30");
+        props.setTimer("03:00");
  
         if (ref.current) clearInterval(ref.current);
         const id = setInterval(() => {
@@ -37,7 +41,7 @@ export default function Timer(props) {
     function getTotalTime() {
         let total = new Date();
  
-        total.setSeconds(total.getSeconds() + 0 * 3600 + 0 * 60 + 30 * 1);
+        total.setSeconds(total.getSeconds() + 0 * 3600 + 3 * 60 + 0 * 1);
         return total;
     }
  
