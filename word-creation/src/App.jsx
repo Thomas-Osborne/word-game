@@ -176,7 +176,7 @@ export default function App() {
       <main>
         <div className="container">
           <div className="menu-container">
-          <Instructions className="inline-block"/>
+          <Instructions max={MAX_LENGTH} className="inline-block"/>
             <button className="button-menu inline-block" onClick={getRandomWord}>Generate New Word</button>
             <button className="button-menu inline-block" onClick={() => setIsRevealed(true)}>Give Up</button>
           </div>

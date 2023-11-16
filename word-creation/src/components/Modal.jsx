@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,8 +11,11 @@ export default function Modal(props) {
                 <div className="overlay">
                     <div className="modal-content">
                         <h1 className="modal-heading">{props.heading}</h1>
-                        <p>This is my modal. Hello everybody.</p>
-                        <button className="button-icon close-modal" onClick={props.toggle}>
+                        {props.content}
+                        <button 
+                            className="button-icon close-modal" 
+                            onClick={props.toggle}
+                        >
                             <FontAwesomeIcon icon={faCircleXmark} size="2x" />
                         </button>
                     </div>
