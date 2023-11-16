@@ -1,7 +1,8 @@
-import {useState} from "react"
+import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
+// Based on https://www.youtube.com/watch?v=9DwGahSqcEc
 export default function Modal(props) {
 
     return (
