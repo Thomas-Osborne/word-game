@@ -18,14 +18,14 @@ export default function Timer() {
         let { total, hours, minutes, seconds } = timeLeft(event);
         if (total >= 0) {
             setTimer(
-                (minutes > 9 ? minutes : '0' + minutes) + ':'
-                + (seconds > 9 ? seconds : '0' + seconds)
+                (minutes > 9 ? minutes : "0" + minutes) + ":"
+                + (seconds > 9 ? seconds : "0" + seconds)
             )
         }
     }
 
     function clearTimer(event) {
-        setTimer('03:00');
+        setTimer("03:00");
  
         if (ref.current) clearInterval(ref.current);
         const id = setInterval(() => {
@@ -35,15 +35,15 @@ export default function Timer() {
         ref.current = id;
     }
  
-    function getDeadTime(event) {
-        let deadline = new Date();
+    function getTotalTime() {
+        let total = new Date();
  
-        deadline.setSeconds(deadline.getSeconds() + 180);
-        return deadline;
+        total.setSeconds(total.getSeconds() + 0 * 3600 + 3 * 60 + 0 * 0);
+        return total;
     }
  
     useEffect(() => {
-        clearTimer(getDeadTime());
+        clearTimer(getTotalTime());
     }, []);
 
 
