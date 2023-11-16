@@ -102,7 +102,12 @@ button:hover:enabled {
 
 .score-latest-text {
     color: red;
+    padding-top: 10px;
     text-align: center;
+}
+
+.score-latest-text:hover {
+    animation: go-up 0.8s;
 }
 
 .score-text, .score-latest-text {
@@ -286,4 +291,9 @@ body.active-modal {
     50% { transform: rotate(0deg); }
     75% { transform: rotate(3deg); }
     100% { transform: rotate(0deg); }
+}
+
+@keyframes go-up {
+    0% { transform: translate(0) }
+    100% { transform: translateY(-20px)}
 }
