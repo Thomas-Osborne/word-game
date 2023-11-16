@@ -159,17 +159,16 @@ export default function App() {
   }
 
   function applyScore(length) {
-    if (length === 6) {
-      setScore(prevScore => ({
-        points: prevScore.points + 2 * length, // double points for max length word
-        totalFound: prevScore.totalFound + 1
-      }));
+    let increase;
+    if (length === MAX_LENGTH) {
+      increase = 2 * length; // double points for max length word
     } else {
-      setScore(prevScore => ({
-        points: prevScore.points + length,
-        totalFound: prevScore.totalFound + 1
-      }));
+      increase = length;
     }
+    setScore(prevScore => ({
+      points: prevScore.points + increase,
+      totalFound: prevScore.totalFound + 1
+    }))
   }
 
   return (

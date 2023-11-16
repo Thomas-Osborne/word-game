@@ -21,7 +21,6 @@ export default function Replay(props) {
         setActive(prevActive => !prevActive);
     }
 
-
     return (
         <Icon 
             toggle={toggle}
