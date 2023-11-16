@@ -26,7 +26,7 @@ button:hover:enabled {
 .button-icon {
     border: none;
     background: none;
-    padding: 10px;
+    padding: 0;
 }
 
 .button-icon:hover {
@@ -38,17 +38,13 @@ button:hover:enabled {
     align-items: center;
 }
 
-.instructions-container {
+.icon-container {
     float: left;
     padding: 0 10px;
     text-align: center;
 }
 
-.button-instructions {
-    padding: 0;
-}
-
-.instructions-text {
+.icon-text {
     font-size: 0.7em;
     font-weight: 600;
     margin: 0;

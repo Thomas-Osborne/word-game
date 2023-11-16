@@ -20,11 +20,11 @@ export default function Instructions(props) {
     }
 
     return (
-        <div className="instructions-container">
-            <button className="button-icon button-instructions" onClick={toggle}>
+        <div className="icon-container">
+            <button className="button-icon" onClick={toggle}>
                 <FontAwesomeIcon icon={faBookOpen} size="2x" />
             </button>
-            <p className="instructions-text">HOW</p>
+            <p className="icon-text">HOW</p>
             <Modal 
                 modal={active}
                 toggle={toggle}
