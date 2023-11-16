@@ -9,6 +9,7 @@ import incorrectSound from "./assets/incorrect-answer.mp3"
 import guitarMusic from "./assets/guitar-music.mp3"
 
 import Header from "./components/Header"
+import Timer from "./components/Timer"
 import Icon from "./components/Icon"
 import Instructions from "./components/Instructions"
 import GiveUp from "./components/GiveUp"
@@ -220,6 +221,7 @@ export default function App() {
       <Header title="Word Game"/>
       <main>
         <div className="container">
+          <Timer />
           <div className="menu-container">
             <Instructions max={MAX_LENGTH} className="inline-block" />
             <Replay restart={getRandomWord} className="inline-block" />
