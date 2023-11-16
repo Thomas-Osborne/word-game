@@ -184,8 +184,12 @@ button:hover:enabled {
     background: linear-gradient(90deg, rgb(241, 197, 100), #cfa92a) 100%;
 }
 
-.button-menu:hover, .word-container:hover {
-    animation: tilt-shaking 0.5s;
+.button-primary:hover, .word-container:nth-child(even):hover {
+    animation: tilt-shake-cw 0.5s;
+}
+
+.button-secondary:hover, .word-container:nth-child(odd):hover {
+    animation: tilt-shake-acw 0.5s;
 }
 
 .letter {
@@ -244,10 +248,18 @@ body.active-modal {
     text-transform: uppercase;
 }
 
-@keyframes tilt-shaking {
+@keyframes tilt-shake-cw {
     0% { transform: rotate(0deg); }
     25% { transform: rotate(3deg); }
     50% { transform: rotate(0deg); }
     75% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes tilt-shake-acw {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(3deg); }
     100% { transform: rotate(0deg); }
 }
