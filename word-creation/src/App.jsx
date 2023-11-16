@@ -211,7 +211,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <Header title="Word Game"/>
       <main>
         <div className="container">
