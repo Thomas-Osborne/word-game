@@ -1,5 +1,7 @@
 import { sortedWords } from "./sorted-words"
 import { useState, useEffect } from "react"
+
+//Source: https://pixabay.com/
 import correctSound from "./assets/correct-answer.mp3"
 import incorrectSound from "./assets/incorrect-answer.mp3"
 
@@ -135,21 +137,17 @@ export default function App() {
   function checkWord(event) {
     console.log("filtered words", filteredWords);
     const capitalisedWord = inputtedWord.replace(/[^a-zA-Z]/g,'').toUpperCase();
+    let sound = incorrectSound;
     if (capitalisedWord.length == 0) {
       setAlert({message: "Please enter a word.", error: true})
-      playSound(incorrectSound);
     } else if (capitalisedWord.length < 3) {
       setAlert({message: `The word ${truncateWord(capitalisedWord)} is too short.`, error: true});
-      playSound(incorrectSound);
     } else if (capitalisedWord.length > 6) {
       setAlert({message: `The word ${truncateWord(capitalisedWord)} is too long.`, error: true});
-      playSound(incorrectSound);
     } else if (!isWord(capitalisedWord, sortedWords)) {
       setAlert({message: `The word ${truncateWord(capitalisedWord)} is not a word.`, error: true});
-      playSound(incorrectSound);
     } else if (!isWord(capitalisedWord, filteredWords)){
       setAlert({message: `The word ${truncateWord(capitalisedWord)} is not on the board.`, error: true});
-      playSound(incorrectSound);
     } else {
       const word = filteredWords.find(word => word.name === capitalisedWord);
       if (word.found) {
@@ -161,10 +159,11 @@ export default function App() {
             word.name === capitalisedWord ? {...word, revealed: true, found: true} : word
           ))
         )); 
-        playSound(correctSound);
+        sound = correctSound;
         applyScore(capitalisedWord.length);
       }
     }
+    playSound(sound);
     setInputtedWord("");
   }
 
