@@ -219,8 +219,8 @@ export default function App() {
               value={inputtedWord} 
               onChange={handleChange}
               onKeyDown={
-                (e) => {
-                  if (e.key === "Enter") {
+                (event) => {
+                  if (event.key === "Enter") {
                     checkWord();
                   }
                 }
