@@ -12,6 +12,12 @@ button:hover:enabled {
     background-color: cyan;
 }
 
+.button-icon {
+    border: none;
+    background: none;
+    padding: 10px;
+}
+
 .header {
     display: flex;
     align-items: center;
