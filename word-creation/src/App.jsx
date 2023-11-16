@@ -229,7 +229,7 @@ export default function App() {
             <Icon
               toggle={() => setIsSoundOn(prevIsSoundOn => !prevIsSoundOn)}
               isDisabled={false}
-              buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> : <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> }
+              buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
               buttonText={"sfx"}
               active={false} 
             />
