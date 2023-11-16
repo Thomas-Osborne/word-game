@@ -238,7 +238,7 @@ export default function App() {
               disabled={isRevealed}
             />
             <button 
-              className="submit-guess"
+              className="button-menu submit-guess"
               onClick={checkWord}
               disabled={isRevealed}>Submit</button>
           </div>
