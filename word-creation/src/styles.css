@@ -59,6 +59,7 @@ button:hover:enabled {
     color: black;
     padding: 20px;
     width: 100%;
+    border-bottom: 1px solid rgb(209, 209, 190);
 }
 
 .header-title {
@@ -80,9 +81,6 @@ button:hover:enabled {
     width: 1000px;
     height: 100%;
     margin: 0 auto;
-    background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
-    border: 2px solid black;
-    border-radius: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
     align-items: center;
@@ -178,6 +176,14 @@ button:hover:enabled {
     text-align: center;
     width: 350px;
     height: 60px;
+}
+
+.word-container:nth-child(even) {
+    background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
+}
+
+.word-container:nth-child(odd) {
+    background: linear-gradient(90deg, rgb(241, 197, 100), #cfa92a) 100%;
 }
 
 .letter {
