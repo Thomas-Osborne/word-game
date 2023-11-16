@@ -161,6 +161,10 @@ button:hover:enabled {
     font-weight: 500
 }
 
+.input-guess:disabled .submit-guess:disabled {
+    background-color: #EAEAEA;
+}
+
 .word-wrapper {
     max-height: 500px;
     width: 75%;
@@ -205,19 +209,19 @@ Source: https://stackoverflow.com/questions/63413498/unaligned-first-columns-wit
     height: 60px;
 }
 
-.word-container:nth-child(even), .button-primary:hover {
+.word-container:nth-child(even), .button-primary:hover:enabled {
     background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
 }
 
-.word-container:nth-child(odd), .button-secondary:hover {
+.word-container:nth-child(odd), .button-secondary:hover:enabled {
     background: linear-gradient(90deg, rgb(241, 197, 100), #cfa92a) 100%;
 }
 
-.button-primary:hover, .word-container:nth-child(even):hover {
+.button-primary:hover:enabled, .word-container:nth-child(even):hover {
     animation: tilt-shake-cw 0.5s;
 }
 
-.button-secondary:hover, .word-container:nth-child(odd):hover {
+.button-secondary:hover:enabled, .word-container:nth-child(odd):hover {
     animation: tilt-shake-acw 0.5s;
 }
 
