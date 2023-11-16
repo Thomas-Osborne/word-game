@@ -165,6 +165,12 @@ button:hover:enabled {
     font-weight: 500
 }
 
+.input-guess:disabled, .submit-guess:disabled {
+  border-color: 1px solid #999999;
+  background-color: #cccccc;
+  color: rgb(70, 70, 70);
+}
+
 .input-guess:disabled .submit-guess:disabled {
     background-color: #EAEAEA;
 }
