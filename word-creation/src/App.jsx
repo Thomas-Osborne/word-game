@@ -4,6 +4,7 @@ import {useState, useEffect} from "react"
 import Header from "./components/Header"
 import Instructions from "./components/Instructions"
 import GiveUp from "./components/GiveUp"
+import Replay from "./components/Replay"
 import Word from "./components/Word"
 import Alert from "./components/Alert"
 
@@ -177,9 +178,9 @@ export default function App() {
       <main>
         <div className="container">
           <div className="menu-container">
-            <Instructions max={MAX_LENGTH} className="inline-block"/>
-            <button className="button-menu inline-block" onClick={getRandomWord}>Generate New Word</button>
-            <GiveUp isRevealed={isRevealed} reveal={() => setIsRevealed(true)} className="inline-block"/>
+            <Instructions max={MAX_LENGTH} className="inline-block" />
+            <Replay restart={getRandomWord} className="inline-block" />
+            <GiveUp isRevealed={isRevealed} reveal={() => setIsRevealed(true)} className="inline-block" />
           </div>
           <div className="score-container">
             <p className="inline-block score-text">Score: {score.points}</p>
