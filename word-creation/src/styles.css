@@ -20,12 +20,17 @@ button:hover:enabled {
 
 .icon-item {
     display: inline;
+    padding: 0 2px;
 }
 
 .button-icon {
     border: none;
     background: none;
-    padding: 10px;
+}
+
+.instructions-text {
+    font-size: 0.7em;
+    font-weight: 600;
 }
 
 .header {

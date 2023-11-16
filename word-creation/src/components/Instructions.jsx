@@ -8,7 +8,7 @@ export default function Instructions() {
             <button className="button-icon button-instructions">
             <FontAwesomeIcon icon={faBookOpen} size="2x" />
             </button>
-            <span className="instructions-text">HOW</span>
+            <p className="instructions-text">HOW</p>
         </div>
     )
 }
