@@ -1,5 +1,7 @@
 import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
+
+import Header from "./components/Header"
 import Word from "./components/Word"
 import Alert from "./components/Alert"
 
@@ -169,9 +171,7 @@ export default function App() {
 
   return (
     <div>
-      <header className="header">
-        <h2 className="header-title">Word Game</h2>
-      </header>
+      <Header title="Word Game"/>
       <main>
         <div className="container">
           <div>
