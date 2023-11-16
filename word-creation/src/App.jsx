@@ -1,11 +1,14 @@
 import { sortedWords } from "./sorted-words"
 import { useState, useEffect } from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
 
 //Source: https://pixabay.com/
 import correctSound from "./assets/correct-answer.mp3"
 import incorrectSound from "./assets/incorrect-answer.mp3"
 
 import Header from "./components/Header"
+import Icon from "./components/Icon"
 import Instructions from "./components/Instructions"
 import GiveUp from "./components/GiveUp"
 import Replay from "./components/Replay"
@@ -204,6 +207,13 @@ export default function App() {
             <Instructions max={MAX_LENGTH} className="inline-block" />
             <Replay restart={getRandomWord} className="inline-block" />
             <GiveUp isRevealed={isRevealed} reveal={() => setIsRevealed(true)} className="inline-block" />
+            <Icon
+              toggle={() => setIsSoundOn(prevIsSoundOn => !prevIsSoundOn)}
+              isDisabled={false}
+              buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
+              buttonText={isSoundOn ? "mute" : "unmute"}
+              active={false} 
+            />
           </div>
           <div className="score-container">
             <p className="inline-block score-text">Score: {score.points}</p>
