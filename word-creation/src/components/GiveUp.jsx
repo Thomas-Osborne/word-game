@@ -11,8 +11,8 @@ export default function GiveUp(props) {
         <div>
             <h3>Do you really want to give up?</h3>
             <div>
-                <button className="button-menu" onClick={() => {toggle(); props.reveal(); setIsDisabled(true)}}>Yes</button>
-                <button className="button-menu" onClick={toggle}>No</button>
+                <button className="button-menu button-primary" onClick={() => {toggle(); props.reveal(); setIsDisabled(true)}}>Yes</button>
+                <button className="button-menu button-secondary" onClick={toggle}>No</button>
             </div>
         </div>
     )

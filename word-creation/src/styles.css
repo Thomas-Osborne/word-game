@@ -108,10 +108,6 @@ button:hover:enabled {
     background-color: #FFFFFF;
 }
 
-.button-menu:hover {
-    background-color: cyan;
-}
-
 .alert-container {
     margin: 20px;
     border-radius: 10px;
@@ -180,11 +176,11 @@ button:hover:enabled {
     height: 60px;
 }
 
-.word-container:nth-child(even) {
+.word-container:nth-child(even), .button-primary:hover {
     background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
 }
 
-.word-container:nth-child(odd) {
+.word-container:nth-child(odd), .button-secondary:hover {
     background: linear-gradient(90deg, rgb(241, 197, 100), #cfa92a) 100%;
 }
 

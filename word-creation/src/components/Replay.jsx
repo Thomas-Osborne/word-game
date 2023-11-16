@@ -11,8 +11,8 @@ export default function Replay(props) {
         <div>
             <h3>Do you really want to restart?</h3>
             <div>
-                <button className="button-menu" onClick={() => {toggle(); props.restart()}}>Yes</button>
-                <button className="button-menu" onClick={toggle}>No</button>
+                <button className="button-menu button-primary" onClick={() => {toggle(); props.restart()}}>Yes</button>
+                <button className="button-menu button-secondary" onClick={toggle}>No</button>
             </div>
         </div>
     )
