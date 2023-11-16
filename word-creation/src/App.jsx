@@ -25,6 +25,8 @@ export default function App() {
 
   const [isRevealed, setIsRevealed] = useState(false);
 
+  const [isSoundOn, setIsSoundOn] = useState(true);
+
   useEffect(() => {
     getRandomWord();
   }, []);
@@ -176,7 +178,9 @@ export default function App() {
   }
 
   function playSound(sound) {
-    new Audio(sound).play();
+    if (isSoundOn) {
+      new Audio(sound).play();
+    }
   }
 
   function applyScore(length) {
