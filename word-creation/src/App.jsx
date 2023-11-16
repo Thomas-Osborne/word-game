@@ -175,7 +175,7 @@ export default function App() {
       <Header title="Word Game"/>
       <main>
         <div className="container">
-          <div>
+          <div className="menu-container">
           <Instructions className="inline-block"/>
             <button className="button-menu inline-block" onClick={getRandomWord}>Generate New Word</button>
             <button className="button-menu inline-block" onClick={() => setIsRevealed(true)}>Give Up</button>

@@ -28,6 +28,11 @@ button:hover:enabled {
     background: none;
 }
 
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
 .instructions-container {
     float: left;
     padding: 0 10px;
@@ -41,7 +46,7 @@ button:hover:enabled {
 .instructions-text {
     font-size: 0.7em;
     font-weight: 600;
-    padding: 0;
+    margin: 0;
 }
 
 .header {
