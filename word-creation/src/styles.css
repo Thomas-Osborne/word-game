@@ -36,6 +36,10 @@ button:hover:enabled {
     transform: rotate(10deg);
 }
 
+.button-icon:disabled {
+    color: rgb(70, 70, 70);
+}
+
 .menu-container {
     display: flex;
     align-items: center;
