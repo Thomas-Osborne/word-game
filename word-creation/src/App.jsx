@@ -1,7 +1,7 @@
 import { sortedWords } from "./sorted-words"
 import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMusic, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlay, faCirclePause, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
 
 //Source: https://pixabay.com/
 import correctSound from "./assets/correct-answer.mp3"
@@ -222,14 +222,14 @@ export default function App() {
             <Icon
               toggle={() => setIsMusicOn(prevIsMusicOn => !prevIsMusicOn)}
               isDisabled={false}
-              buttonContent={isMusicOn ? <FontAwesomeIcon icon={faMusic} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
+              buttonContent={isMusicOn ? <FontAwesomeIcon icon={faCirclePause} size="2x" /> : <FontAwesomeIcon icon={faCirclePlay} size="2x" /> }
               buttonText="music"
               active={false} 
             />
             <Icon
               toggle={() => setIsSoundOn(prevIsSoundOn => !prevIsSoundOn)}
               isDisabled={false}
-              buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
+              buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> : <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> }
               buttonText={"sfx"}
               active={false} 
             />
