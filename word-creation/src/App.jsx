@@ -28,6 +28,8 @@ export default function App() {
   const [inputtedWord, setInputtedWord] = useState("");
 
   const [score, setScore] = useState({points: 0, totalFound: 0});
+  const [increase, setIncrease] = useState({points: 0, totalFound: 0});
+  
   const [alert, setAlert] = useState({message: "", error: true});
 
   const [isRevealed, setIsRevealed] = useState(false);
@@ -45,6 +47,7 @@ export default function App() {
   useEffect(() => {
     setFilteredWords(findAllWords(chosenWord.actual));
     setScore({points: 0, totalFound: 0});
+    setIncrease({points: 0, totalFound: 0});
     setAlert({message: "Please enter a word.", error: true})
     setIsRevealed(false);
   }, [chosenWord])
@@ -209,6 +212,7 @@ export default function App() {
       points: prevScore.points + increase,
       totalFound: prevScore.totalFound + 1
     }))
+    setIncrease({points: increase, totalFound: 1})
   }
 
   return (
@@ -236,8 +240,8 @@ export default function App() {
             />
           </div>
           <div className="score-container">
-            <Counter type="score" score={score.points}/>
-            <Counter type="words found" score={score.totalFound}/>
+            <Counter type="score" score={score.points} latest={increase.points}/>
+            <Counter type="words found" score={score.totalFound} latest={increase.totalFound}/>
           </div>
           <Alert alert={alert}/>
           <div className="guess-elements">
