@@ -1,11 +1,12 @@
 import { sortedWords } from "./sorted-words"
 import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
+import { faMusic, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
 
 //Source: https://pixabay.com/
 import correctSound from "./assets/correct-answer.mp3"
 import incorrectSound from "./assets/incorrect-answer.mp3"
+import guitarMusic from "./assets/guitar-music.mp3"
 
 import Header from "./components/Header"
 import Icon from "./components/Icon"
@@ -30,7 +31,11 @@ export default function App() {
 
   const [isRevealed, setIsRevealed] = useState(false);
 
+  const [isMusicOn, setIsMusicOn] = useState(true);
   const [isSoundOn, setIsSoundOn] = useState(true);
+
+  const [music, setMusic] = useState(new Audio(guitarMusic));
+  music.loop = true;
 
   useEffect(() => {
     getRandomWord();
@@ -49,6 +54,13 @@ export default function App() {
       setAlert({message: "Thanks for playing!", error: false});
     }
   }, [isRevealed])
+
+  useEffect(() => {
+    music.pause();
+    if (isMusicOn) {
+      music.play();
+    }
+  }, [music, isMusicOn])
 
   function getRandomWord() {
     const maxLengthWords = sortedWords.filter(word => word.name.length == MAX_LENGTH);
@@ -208,10 +220,17 @@ export default function App() {
             <Replay restart={getRandomWord} className="inline-block" />
             <GiveUp isRevealed={isRevealed} reveal={() => setIsRevealed(true)} className="inline-block" />
             <Icon
+              toggle={() => setIsMusicOn(prevIsMusicOn => !prevIsMusicOn)}
+              isDisabled={false}
+              buttonContent={isMusicOn ? <FontAwesomeIcon icon={faMusic} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
+              buttonText="music"
+              active={false} 
+            />
+            <Icon
               toggle={() => setIsSoundOn(prevIsSoundOn => !prevIsSoundOn)}
               isDisabled={false}
               buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
-              buttonText={isSoundOn ? "mute" : "unmute"}
+              buttonText={"sfx"}
               active={false} 
             />
           </div>
