@@ -263,9 +263,9 @@ export default function App() {
           </div>
           <h1 className="chosen-word">{chosenWord.shuffled}</h1>
           <div className="word-wrapper">  
-            <div className="word-list">
+            <ul className="word-list unbulleted-list">
               {filteredWordsElts}
-            </div>
+            </ul>
           </div>
         </div>
       </main>

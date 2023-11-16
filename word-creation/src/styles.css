@@ -13,7 +13,8 @@ button:hover:enabled {
     cursor: pointer;
 }
 
-.icon-list {
+/* Lists with no bullets/default padding and margin */
+.unbulleted-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -164,6 +165,15 @@ button:hover:enabled {
     display: block;
     column-count: 2;
     padding-top: 15px;
+    width: 100%;
+}
+
+/* To fix misalignment of first column using column-count
+Source: https://stackoverflow.com/questions/63413498/unaligned-first-columns-with-column-count */
+.word-list:before {
+    content:"";
+    display:block;
+    margin-top:-1em;
 }
 
 .word-container {

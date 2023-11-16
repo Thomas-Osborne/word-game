@@ -5,7 +5,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 export default function Header(props) {
     return (
         <header className="header">
-            <ul className="icon-list">
+            <ul className="icon-list unbulleted-list">
                 <li className="icon-item">
                     <a href="https://github.com/Thomas-Osborne" target="_blank">
                         <button className="button-icon"><FontAwesomeIcon icon={faGithub} size="2x" /></button>
