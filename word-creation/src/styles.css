@@ -180,7 +180,6 @@ body.active-modal {
 
 .modal-heading {
     font-size: 18px;
-    text-transform: uppercase;
     letter-spacing: 0.1rem; 
 }
 
@@ -202,4 +201,8 @@ body.active-modal {
     top: 10px;
     right: 10px;
     padding: 3px 5px;
+}
+
+.modal-heading, .icon-text {
+    text-transform: uppercase;
 }

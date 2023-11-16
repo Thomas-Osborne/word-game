@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFlag } from '@fortawesome/free-regular-svg-icons'
-import Modal from "./Modal"
+import Icon from "./Icon"
 
 export default function GiveUp(props) {
     const [active, setActive] = useState(false);
@@ -22,20 +22,14 @@ export default function GiveUp(props) {
     }
 
     return (
-        <div className="icon-container">
-            <button 
-                className="button-icon"
-                onClick={toggle}
-                disabled={isDisabled}>
-                <FontAwesomeIcon icon={faFlag} size="2x" />
-            </button>
-            <p className="icon-text">RESIGN</p>
-            <Modal 
-                modal={active}
-                toggle={toggle}
-                heading="GIVE UP?"
-                content={content}
-            />
-        </div>
+        <Icon 
+            toggle={toggle}
+            active={active}
+            isDisabled={isDisabled}
+            buttonContent={<FontAwesomeIcon icon={faFlag} size="2x" />}
+            buttonText="resign"
+            heading="give up"    
+            mainContent={content}
+        />
     )
 }
