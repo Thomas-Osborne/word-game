@@ -134,19 +134,19 @@ export default function App() {
     if (capitalisedWord.length == 0) {
       setAlert({message: "Please enter a word.", error: true})
     } else if (capitalisedWord.length < 3) {
-      setAlert({message: `The word ${capitalisedWord} is too short.`, error: true});
+      setAlert({message: `The word ${truncateWord(capitalisedWord)} is too short.`, error: true});
     } else if (capitalisedWord.length > 6) {
-      setAlert({message: `The word ${capitalisedWord} is too long.`, error: true});
+      setAlert({message: `The word ${truncateWord(capitalisedWord)} is too long.`, error: true});
     } else if (!isWord(capitalisedWord, sortedWords)) {
-      setAlert({message: `The word ${capitalisedWord} is not a word.`, error: true});
+      setAlert({message: `The word ${truncateWord(capitalisedWord)} is not a word.`, error: true});
     } else if (!isWord(capitalisedWord, filteredWords)){
-      setAlert({message: `The word ${capitalisedWord} is not on the board.`, error: true});
+      setAlert({message: `The word ${truncateWord(capitalisedWord)} is not on the board.`, error: true});
     } else {
       const word = filteredWords.find(word => word.name === capitalisedWord);
       if (word.found) {
-        setAlert({message: `The word ${capitalisedWord} has already been found.`, error: true})
+        setAlert({message: `The word ${truncateWord(capitalisedWord)} has already been found.`, error: true})
       } else {
-        setAlert({message: `The word ${capitalisedWord} is on the board!`, error: false});
+        setAlert({message: `The word ${truncateWord(capitalisedWord)} is on the board!`, error: false});
         setFilteredWords(prevFilteredWords => (
           prevFilteredWords.map(word => (
             word.name === capitalisedWord ? {...word, revealed: true, found: true} : word
@@ -156,6 +156,15 @@ export default function App() {
       }
     }
     setInputtedWord("");
+  }
+
+  function truncateWord(word) {
+    const maxChars = 12;
+    if (word.length <= maxChars) {
+      return word;
+    } else {
+      return word.slice(0, maxChars) + "..."
+    }
   }
 
   function applyScore(length) {
