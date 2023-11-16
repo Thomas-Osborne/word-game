@@ -16,6 +16,11 @@ export default function Header(props) {
                         <button className="button-icon"><FontAwesomeIcon icon={faLinkedin} size="2x" /></button>
                     </a>
                 </li>
+                <li className="icon-item">
+                    <a href="mailto: thomas.m.osborne.2@gmail.com" target="_blank">
+                        <button className="button-icon"><FontAwesomeIcon icon={faEnvelope} size="2x" /></button>
+                    </a>
+                </li>
             </ul>
             <h2 className="header-title">{props.title}</h2>
         </header>

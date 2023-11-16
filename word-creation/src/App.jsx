@@ -1,5 +1,6 @@
 import {sortedWords} from "./sorted-words"
 import {useState, useEffect} from "react"
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 import Header from "./components/Header"
 import Word from "./components/Word"
