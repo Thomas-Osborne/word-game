@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
-import Modal from "./Modal"
+import Icon from "./Icon"
 
 export default function Instructions(props) {
     const [active, setActive] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const content = (
         <div>
@@ -20,17 +21,14 @@ export default function Instructions(props) {
     }
 
     return (
-        <div className="icon-container">
-            <button className="button-icon" onClick={toggle}>
-                <FontAwesomeIcon icon={faBookOpen} size="2x" />
-            </button>
-            <p className="icon-text">HOW</p>
-            <Modal 
-                modal={active}
-                toggle={toggle}
-                heading="How to Play"
-                content={content}
-            />
-        </div>
+        <Icon 
+            toggle={toggle}
+            active={active}
+            isDisabled={isDisabled}
+            buttonContent={<FontAwesomeIcon icon={faBookOpen} size="2x" />}
+            buttonText="how"
+            heading="how to play"    
+            mainContent={content}
+        />
     )
 }
