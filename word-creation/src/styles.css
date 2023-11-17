@@ -91,7 +91,7 @@ button:hover:enabled {
 .container {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 60%;
     height: 100%;
     margin: 0 auto;
     padding-top: 20px;
@@ -114,6 +114,7 @@ button:hover:enabled {
     padding: 10px 10px 0 10px;
     font-size: 1.2em;
     font-weight: 600;
+    text-align: center;
 }
 
 .score-latest-text {
@@ -298,6 +299,23 @@ body.active-modal {
 
 .rules-text {
     margin-top: 0;
+}
+
+@media screen and (max-width: 1550px) {
+    .word-list {
+        column-count: 1;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .guess-elements, .submit-guess, .score-container {
+        width: 100%;
+        align-items: center;
+    }
+
+    .header-title {
+        text-align: right;
+    }
 }
 
 @keyframes tilt-shake-cw {
