@@ -25,7 +25,7 @@ export default function App() {
   const [chosenWord, setChosenWord] = useState({actual: "", shuffled: ""});
 
   const [filteredWords, setFilteredWords] = useState([]);
-  const filteredWordsElts = filteredWords.map(word => <Word word={word} key={word}/>);
+  const filteredWordsElts = filteredWords.map((word, index) => <Word word={word} key={index}/>);
 
   const [inputtedWord, setInputtedWord] = useState("");
 
