@@ -158,9 +158,7 @@ export default function App() {
   }
 
   function handleChange(event) {
-    console.log(event.target.value);
     setInputtedWord(event.target.value);
-    console.log("inputted word", inputtedWord);
   }
 
   function checkWord(event) {
