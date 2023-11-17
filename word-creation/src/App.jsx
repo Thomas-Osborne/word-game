@@ -44,6 +44,8 @@ export default function App() {
 
   const [timer, setTimer] = useState("03:00")
 
+  const [wordsFound, setWordsFound] = useState(0);
+
   useEffect(() => {
     getRandomWord();
   }, []);
@@ -67,7 +69,7 @@ export default function App() {
   useEffect(() => {
     if (isRevealed) {
       setFilteredWords(prevFilteredWords => (prevFilteredWords.map(word => ({...word, revealed: true}))));
-      setAlert({message: "Thanks for playing!", error: false});
+      setAlert({message: `You found ${wordsFound} of ${filteredWords.length} words!`, error: false});
     }
   }, [isRevealed])
 
@@ -188,6 +190,7 @@ export default function App() {
         )); 
         sound = correctSound;
         setCorrectWord(capitalisedWord);
+        setWordsFound(prevWordsFound => prevWordsFound + 1);
         applyScore(capitalisedWord.length);
       }
     }
