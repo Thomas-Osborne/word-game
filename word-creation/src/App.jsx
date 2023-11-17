@@ -2,7 +2,7 @@ import { sortedWords } from "./sorted-words"
 import { commonSixLetters } from "./common-six-letter"
 import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlay, faCirclePause, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlay, faCirclePause, faVolumeHigh, faVolumeXmark, faTruckField } from '@fortawesome/free-solid-svg-icons'
 
 //Source: https://pixabay.com/
 import correctSound from "./assets/correct-answer.mp3"
@@ -21,6 +21,8 @@ import Alert from "./components/Alert"
 
 export default function App() {
   const MAX_LENGTH = 6;
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [chosenWord, setChosenWord] = useState({actual: "", shuffled: ""});
 
@@ -46,12 +48,19 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    setFilteredWords(findAllWords(chosenWord.actual));
-    setScore({points: 0, totalFound: 0});
-    setIncrease({points: 0, totalFound: 0});
-    setAlert({message: "Please enter a word.", error: true})
-    setIsRevealed(false);
-    setTimer("03:00");
+    async function loadStart() {
+      setIsLoaded(false);
+      setFilteredWords(findAllWords(chosenWord.actual));
+      setScore({points: 0, totalFound: 0});
+      setIncrease({points: 0, totalFound: 0});
+      setAlert({message: "Please enter a word.", error: true})
+      setIsRevealed(false);
+      setTimer("03:00");
+      setIsLoaded(true);
+    }
+
+    loadStart();
+
   }, [chosenWord])
 
   useEffect(() => {
@@ -216,7 +225,7 @@ export default function App() {
   return (
     <div className="app">
       <Header title="Word Game"/>
-      <main>
+      {isLoaded && <main>
         <Music isMusicOn={isMusicOn}/>
         <div className="container">
           <Timer timer={timer} setTimer={setTimer} isRevealed={isRevealed} isRestarted={chosenWord}/>
@@ -273,7 +282,7 @@ export default function App() {
             </ul>
           </div>
         </div>
-      </main>
+      </main>}
     </div>
   )
 }
