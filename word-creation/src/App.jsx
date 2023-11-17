@@ -27,7 +27,7 @@ export default function App() {
   const [chosenWord, setChosenWord] = useState({actual: "", shuffled: ""});
 
   const [filteredWords, setFilteredWords] = useState([]);
-  const filteredWordsElts = filteredWords.map((word, index) => <Word word={word} key={index}/>);
+  const filteredWordsElts = filteredWords.map((word, index) => <Word word={word} key={index} containerType="word-container word-regular"/>);
 
   const [inputtedWord, setInputtedWord] = useState("");
   const [correctWord, setCorrectWord] = useState("");
@@ -249,7 +249,7 @@ export default function App() {
               toggle={() => setIsSoundOn(prevIsSoundOn => !prevIsSoundOn)}
               isDisabled={false}
               buttonContent={isSoundOn ? <FontAwesomeIcon icon={faVolumeHigh} size="2x" /> : <FontAwesomeIcon icon={faVolumeXmark} size="2x" /> }
-              buttonText={"sound"}
+              buttonText={"sfx"}
               active={false} 
             />
           </div>
@@ -279,7 +279,11 @@ export default function App() {
               onClick={checkWord}
               disabled={isRevealed}>Submit</button>
           </div>
-          <h1 className="chosen-word">{chosenWord.shuffled}</h1>
+          <div>
+            <ul className="unordered-list">
+              <Word containerType="word-container word-special" word={{name: chosenWord.shuffled, found: true, revealed: true}} />
+            </ul>
+          </div>
           <div className="word-wrapper">  
             <ul className="word-list unbulleted-list">
               {filteredWordsElts}
