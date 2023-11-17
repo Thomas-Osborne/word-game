@@ -308,7 +308,7 @@ body.active-modal {
 }
 
 @media screen and (max-width: 650px) {
-    .guess-elements, .submit-guess, .score-container {
+    .input-guess, .submit-guess, .score-container, .alert-container {
         width: 100%;
         align-items: center;
     }

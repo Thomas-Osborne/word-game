@@ -185,7 +185,7 @@ export default function App() {
   }
 
   function truncateWord(word) {
-    const maxChars = 12;
+    const maxChars = 10;
     if (word.length <= maxChars) {
       return word;
     } else {
