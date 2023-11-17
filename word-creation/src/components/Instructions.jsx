@@ -13,12 +13,12 @@ export default function Instructions(props) {
             <ul className="unbulleted-list">
                 <Word word={{name: "RULES", found: true, revealed: true}} />
             </ul>
-            <p className="rules-text">There are 6 letters for you to play with, you need to make as many words out of them as possible. You can give up and reveal the words, but then you will not be able to play!</p>
+            <p className="rules-text">Make as many words from the {props.max} letters as possible. You get points for each word you can find. If the time runs out then you can no longer enter words!</p>
 
             <ul className="unbulleted-list">
                 <Word word={{name: "SCORE", found: true, revealed: true}} />
             </ul>
-            <p className="rules-text">If you get a {props.max} letter word you score {2 * props.max} points. Otherwise you score as many points as the number of letters.</p>
+            <p className="rules-text">If you get a {props.max} letter word you score {2 * props.max} points. Otherwise you score as many points as the number of letters the word has.</p>
             <button className="button-menu button-primary" onClick={toggle}>Okay!</button>
         </div>
     )
