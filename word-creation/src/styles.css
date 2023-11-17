@@ -209,15 +209,15 @@ button:hover:enabled {
 
 .word-list {
     display: block;
-    column-count: 2;
-    padding-top: 15px;
+    padding: 5px;
     width: 100%;
     margin-bottom: 60px;
+    text-align: center;
 }
 
 .word-container {
-    padding: 10px 10px;
-    margin: 10px 0;
+    padding: 10px;
+    margin: 10px;
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;
@@ -301,12 +301,6 @@ body.active-modal {
     margin-top: 0;
 }
 
-@media screen and (max-width: 1550px) {
-    .word-list {
-        column-count: 1;
-    }
-}
-
 @media screen and (max-width: 650px) {
     .input-guess, .submit-guess, .score-container, .container {
         width: 100%;
@@ -315,6 +309,10 @@ body.active-modal {
 
     .header-title {
         text-align: right;
+    }
+
+    .timer {
+        font-size: 1.5em;
     }
 }
 
