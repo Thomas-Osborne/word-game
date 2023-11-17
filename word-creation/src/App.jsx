@@ -7,8 +7,8 @@ import { faCirclePlay, faCirclePause, faVolumeHigh, faVolumeXmark } from '@forta
 //Source: https://pixabay.com/
 import correctSound from "./assets/correct-answer.mp3"
 import incorrectSound from "./assets/incorrect-answer.mp3"
-import guitarMusic from "./assets/guitar-music.mp3"
 
+import Music from "./components/Music"
 import Header from "./components/Header"
 import Timer from "./components/Timer"
 import Icon from "./components/Icon"
@@ -39,9 +39,6 @@ export default function App() {
   const [isMusicOn, setIsMusicOn] = useState(false);
   const [isSoundOn, setIsSoundOn] = useState(true);
 
-  const [music, setMusic] = useState(new Audio(guitarMusic));
-  music.loop = true;
-
   const [timer, setTimer] = useState("03:00")
 
   useEffect(() => {
@@ -63,13 +60,6 @@ export default function App() {
       setAlert({message: "Thanks for playing!", error: false});
     }
   }, [isRevealed])
-
-  useEffect(() => {
-    music.pause();
-    if (isMusicOn) {
-      music.play();
-    }
-  }, [isMusicOn])
 
   useEffect(() => {
     if (timer === "00:00") {
@@ -225,6 +215,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <Music isMusicOn={isMusicOn}/>
       <Header title="Word Game"/>
       <main>
         <div className="container">
