@@ -61,12 +61,18 @@ button:hover:enabled {
 .header {
     display: flex;
     align-items: center;
+    justify-content: left;
     height: 65px;
     background: linear-gradient(90deg, #cfa92a, rgb(241, 197, 100) 100%);
     color: black;
     padding: 20px;
     width: 100%;
     border-bottom: 1px solid rgb(209, 209, 190);
+}
+
+.icon-list {
+    justify-content: center;
+    position: absolute;
 }
 
 .header-title {
