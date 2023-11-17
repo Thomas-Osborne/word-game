@@ -31,6 +31,7 @@ export default function Timer(props) {
         if (ref.current) {
             clearInterval(ref.current);
         }
+
         const id = setInterval(() => {
             if (!(props.isRevealed)) {
                 startTimer(event);
@@ -49,7 +50,7 @@ export default function Timer(props) {
  
     useEffect(() => {
         clearTimer(getTotalTime());
-    }, [props.isRevealed]);
+    }, [props.isRevealed, props.isRestarted]);
     
 
     return (
