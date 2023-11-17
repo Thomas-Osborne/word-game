@@ -307,6 +307,12 @@ body.active-modal {
     margin-top: 0;
 }
 
+@media screen and (max-width: 1600px) {
+    .container {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .word-container {
         width: 300px;
