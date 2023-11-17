@@ -36,7 +36,7 @@ export default function App() {
 
   const [isRevealed, setIsRevealed] = useState(false);
 
-  const [isMusicOn, setIsMusicOn] = useState(true);
+  const [isMusicOn, setIsMusicOn] = useState(false);
   const [isSoundOn, setIsSoundOn] = useState(true);
 
   const [music, setMusic] = useState(new Audio(guitarMusic));
@@ -69,7 +69,7 @@ export default function App() {
     if (isMusicOn) {
       music.play();
     }
-  }, [music, isMusicOn])
+  }, [isMusicOn])
 
   useEffect(() => {
     if (timer === "00:00") {
