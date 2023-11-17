@@ -246,7 +246,6 @@ button:hover:enabled {
 .word-special {
     background:linear-gradient(lightcoral, #eca6a6);
     border: 1px solid black;
-    text-align: center;
 }
 
 .word-regular:nth-child(even), .button-primary:hover:enabled {
