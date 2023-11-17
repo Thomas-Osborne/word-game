@@ -75,9 +75,12 @@ button:hover:enabled {
     position: absolute;
 }
 
+/* margin-left: auto pushes the text to the right */
 .header-title {
     text-align: center;
-    margin: auto;
+    margin-left: auto;
+    font-weight: 700;
+    font-style: italic;
 }
 
 .inline-block {
@@ -340,10 +343,6 @@ body.active-modal {
     /* Only render latest text score if not too big*/
     .score-latest-text {
         display: none;
-    }
-
-    .header-title {
-        text-align: right;
     }
 
     .alert-text, .button-menu {
