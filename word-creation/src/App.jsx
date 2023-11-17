@@ -257,32 +257,34 @@ export default function App() {
             <Counter type="score" score={score.points} latest={increase.points} lastWord={correctWord}/>
           </div>
           <Alert alert={alert}/>
-          <div className="guess-elements">
-            <input
-              className="input-guess"
-              type="text" 
-              placeholder={isRevealed ? "" : "Enter a word..."} 
-              name="inputtedWord" 
-              value={inputtedWord} 
-              onChange={handleChange}
-              onKeyDown={
-                (event) => {
-                  if (event.key === "Enter") {
-                    checkWord();
+          <div className="word-guess-container">
+            <div className="guess-elements">
+              <input
+                className="input-guess"
+                type="text" 
+                placeholder={isRevealed ? "" : "Enter a word..."} 
+                name="inputtedWord" 
+                value={inputtedWord} 
+                onChange={handleChange}
+                onKeyDown={
+                  (event) => {
+                    if (event.key === "Enter") {
+                      checkWord();
+                    }
                   }
                 }
-              }
-              disabled={isRevealed}
-            />
-            <button 
-              className="button-menu submit-guess button-primary"
-              onClick={checkWord}
-              disabled={isRevealed}>Submit</button>
-          </div>
-          <div>
-            <ul className="unordered-list">
-              <Word containerType="word-container word-special" word={{name: chosenWord.shuffled, found: true, revealed: true}} />
-            </ul>
+                disabled={isRevealed}
+              />
+              <button 
+                className="button-menu submit-guess button-primary"
+                onClick={checkWord}
+                disabled={isRevealed}>Submit</button>
+            </div>
+            <div>
+              <ul className="unordered-list">
+                <Word containerType="word-container word-special" word={{name: chosenWord.shuffled, found: true, revealed: true}} />
+              </ul>
+            </div>
           </div>
           <div className="word-wrapper">  
             <ul className="word-list unbulleted-list">
