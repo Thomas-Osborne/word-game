@@ -1,5 +1,5 @@
 import { sortedWords } from "./sorted-words"
-import { commonSixLetters } from "./components/common-six-letter"
+import { commonSixLetters } from "./common-six-letter"
 import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlay, faCirclePause, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'

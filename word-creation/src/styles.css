@@ -107,7 +107,7 @@ button:hover:enabled {
 }
 
 .score-container {
-    padding: 0 5px;
+    padding: 0;
 }
 
 .score-text {
@@ -324,7 +324,12 @@ body.active-modal {
         width: 100%;
         align-items: center;
     }
-    
+
+    /* Only render latest text score if not too big*/
+    .score-latest-text {
+        display: none;
+    }
+
     .header-title {
         text-align: right;
     }
