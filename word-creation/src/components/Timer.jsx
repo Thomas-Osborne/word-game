@@ -28,11 +28,13 @@ export default function Timer(props) {
     }
 
     function clearTimer(event) {
-        props.setTimer("03:00");
- 
-        if (ref.current) clearInterval(ref.current);
+        if (ref.current) {
+            clearInterval(ref.current);
+        }
         const id = setInterval(() => {
-            startTimer(event);
+            if (!(props.isRevealed)) {
+                startTimer(event);
+            }
         }, 1000)
 
         ref.current = id;
