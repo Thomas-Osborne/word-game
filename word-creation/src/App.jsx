@@ -215,9 +215,9 @@ export default function App() {
 
   return (
     <div className="app">
-      <Music isMusicOn={isMusicOn}/>
       <Header title="Word Game"/>
       <main>
+        <Music isMusicOn={isMusicOn}/>
         <div className="container">
           <Timer timer={timer} setTimer={setTimer} isRevealed={isRevealed} isRestarted={chosenWord}/>
           <div className="menu-container">
