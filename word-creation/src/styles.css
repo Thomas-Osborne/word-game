@@ -111,7 +111,7 @@ button:hover:enabled {
 
 .score-container {
     padding: 0;
-    height: 100%;
+    height: 75px;
 }
 
 .score-text {
