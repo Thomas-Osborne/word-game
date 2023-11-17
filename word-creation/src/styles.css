@@ -149,7 +149,7 @@ button:hover:enabled {
     margin: 20px;
     border-radius: 10px;
     border: 3px solid;
-    width: 60%;
+    width: 40%;
 }
 
 .alert-text {
@@ -249,6 +249,7 @@ button:hover:enabled {
     font-size: 1.8em;
     font-weight: 700;
     width: 40px;
+    height: 40px;
 }
 
 body.active-modal {
@@ -301,12 +302,29 @@ body.active-modal {
     margin-top: 0;
 }
 
+@media screen and (max-width: 1000px) {
+    .word-container {
+        width: 300px;
+        height: 50px;
+    }
+
+    .letter {
+        width: 28.6px;
+        height: 28.6px;
+        font-size: 16px;
+    }
+
+    .alert-container {
+        width: 60%;
+    }
+}
+
 @media screen and (max-width: 650px) {
     .input-guess, .submit-guess, .score-container, .container {
         width: 100%;
         align-items: center;
     }
-
+    
     .header-title {
         text-align: right;
     }
