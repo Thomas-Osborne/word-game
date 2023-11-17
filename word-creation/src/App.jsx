@@ -30,6 +30,7 @@ export default function App() {
   const filteredWordsElts = filteredWords.map((word, index) => <Word word={word} key={index}/>);
 
   const [inputtedWord, setInputtedWord] = useState("");
+  const [correctWord, setCorrectWord] = useState("");
 
   const [score, setScore] = useState({points: 0, totalFound: 0});
   const [increase, setIncrease] = useState({points: 0, totalFound: 0});
@@ -186,6 +187,7 @@ export default function App() {
           ))
         )); 
         sound = correctSound;
+        setCorrectWord(capitalisedWord);
         applyScore(capitalisedWord.length);
       }
     }
@@ -249,8 +251,7 @@ export default function App() {
             />
           </div>
           <div className="score-wrapper">
-            <Counter type="score" score={score.points} latest={increase.points}/>
-            <Counter type="words" score={score.totalFound} latest={increase.totalFound}/>
+            <Counter type="score" score={score.points} latest={increase.points} lastWord={correctWord}/>
           </div>
           <Alert alert={alert}/>
           <div className="guess-elements">
