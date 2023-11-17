@@ -107,7 +107,7 @@ button:hover:enabled {
 }
 
 .score-container {
-    padding: 0;
+    padding: 0 5px;
 }
 
 .score-text {
@@ -143,6 +143,8 @@ button:hover:enabled {
     margin: 0 5px;
     border-radius: 5px;
     background-color: #FFFFFF;
+    color: black;
+    border-color: black;
 }
 
 .alert-container {
@@ -325,6 +327,16 @@ body.active-modal {
         align-items: center;
     }
 
+    .score-container {
+        display: inline-block;
+        width: 50%;
+        vertical-align: center;
+    }
+
+    .score-number {
+        display: block;
+    }
+    
     /* Only render latest text score if not too big*/
     .score-latest-text {
         display: none;

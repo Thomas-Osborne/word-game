@@ -239,9 +239,9 @@ export default function App() {
               active={false} 
             />
           </div>
-          <div className="score-container">
+          <div className="score-wrapper">
             <Counter type="score" score={score.points} latest={increase.points}/>
-            <Counter type="words found" score={score.totalFound} latest={increase.totalFound}/>
+            <Counter type="words" score={score.totalFound} latest={increase.totalFound}/>
           </div>
           <Alert alert={alert}/>
           <div className="guess-elements">
