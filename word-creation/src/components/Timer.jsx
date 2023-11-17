@@ -55,7 +55,7 @@ export default function Timer(props) {
 
     return (
         <div>
-            <h2>{props.timer}</h2>
+            <h1 className="timer">{props.timer}</h1>
         </div>
     )
 }
