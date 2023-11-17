@@ -219,7 +219,7 @@ export default function App() {
       <Header title="Word Game"/>
       <main>
         <div className="container">
-          <Timer timer={timer} setTimer={setTimer}/>
+          <Timer timer={timer} setTimer={setTimer} isRevealed={isRevealed}/>
           <div className="menu-container">
             <Instructions max={MAX_LENGTH} className="inline-block" />
             <Replay restart={getRandomWord} className="inline-block" />

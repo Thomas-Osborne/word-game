@@ -47,7 +47,7 @@ export default function Timer(props) {
  
     useEffect(() => {
         clearTimer(getTotalTime());
-    }, []);
+    }, [props.isRevealed]);
     
 
     return (
