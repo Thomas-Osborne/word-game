@@ -346,6 +346,10 @@ body.active-modal {
         text-align: right;
     }
 
+    .alert-text, .button-menu {
+        font-size: 1em;
+    }
+
     .timer {
         font-size: 1.5em;
     }
