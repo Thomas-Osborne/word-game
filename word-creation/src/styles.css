@@ -218,6 +218,12 @@ button:hover:enabled {
     border-radius: 10px;
 }
 
+.line-break {
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 60%;
+}
+
 .word-list {
     display: block;
     padding: 5px;

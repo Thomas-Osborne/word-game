@@ -286,6 +286,7 @@ export default function App() {
               </ul>
             </div>
           </div>
+          <div className="line-break"></div>
           <div className="word-wrapper">  
             <ul className="word-list unbulleted-list">
               {filteredWordsElts}
