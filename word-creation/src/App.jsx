@@ -230,9 +230,9 @@ export default function App() {
   return (
     <div className="app">
       <Header title="Word Game"/>
-      {isLoaded && <main>
+      <main>
         <Music isMusicOn={isMusicOn}/>
-        <div className="container">
+        {isLoaded && <div className="container">
           <Timer timer={timer} setTimer={setTimer} isRevealed={isRevealed} isRestarted={chosenWord}/>
           <div className="menu-container">
             <Instructions max={MAX_LENGTH} className="inline-block" />
@@ -291,8 +291,8 @@ export default function App() {
               {filteredWordsElts}
             </ul>
           </div>
-        </div>
-      </main>}
+        </div>}
+      </main>
     </div>
   )
 }
