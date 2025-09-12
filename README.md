@@ -15,4 +15,4 @@ A six letter word is always guaranteed. The words of at most six letters were ta
 ### Credits:
 - Music and Sound Effects thanks to [Pixabay](https://pixabay.com/sound-effects/).
 - Icons thanks to [FontAwesome](https://fontawesome.com/).
-- Word List thanks to the user [dwyl](https://github.com/dwyl) on GitHub.
+- Word List `words_alpha.txt` thanks to the user [dwyl](https://github.com/dwyl) on GitHub.
