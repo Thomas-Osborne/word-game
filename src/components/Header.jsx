@@ -12,7 +12,7 @@ export default function Header(props) {
                     </a>
                 </li>
                 <li className="icon-item">
-                    <a href="https://www.linkedin.com/in/tom-osborne-716619288/" target="_blank">
+                    <a href="https://www.linkedin.com/in/thomas-osborne-cs" target="_blank">
                         <button className="button-icon"><FontAwesomeIcon icon={faLinkedin} size="2x" /></button>
                     </a>
                 </li>
